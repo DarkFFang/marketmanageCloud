@@ -56,15 +56,32 @@ public class StockController {
         return stockMapper.deleteStockById(id);
     }
 
+    @PutMapping("/updateStockQuantityIncByGoodId")
+    public int updateStockQuantityIncByGoodId(Integer goodid, Integer increment) {
+        return stockMapper.updateStockQuantityIncByGoodId(goodid, increment);
+    }
+
+    @PutMapping("/updateStockQuantityDecByGoodId")
+    public int updateStockQuantityDecByGoodId(Integer goodid, Integer decrement) {
+        return stockMapper.updateStockQuantityDecByGoodId(goodid, decrement);
+    }
+
+    @PutMapping("/updateStockQuantityByGoodId")
+    public int updateStockQuantityByGoodId(Integer goodid, Integer newQuantity) {
+        return stockMapper.updateStockQuantityByGoodId(goodid, newQuantity);
+    }
+
+    @GetMapping("/findStockCount")
+    public int findStockCount() {
+        return stockMapper.findStockCount();
+    }
+
     /**
      * 通过id更新库存
      *
      * @param stock 库存
      * @return int
      */
-    public int updateStockById(Stock stock) {
-       return 0;
-    }
 
     /**
      * 通过商品名称查询库存
@@ -72,8 +89,9 @@ public class StockController {
      * @param name 名字
      * @return {@link Stock}
      */
+    @GetMapping("/findStockByName")
     public Stock findStockByName(String name) {
-        return null;
+        return stockMapper.findStockByName(name);
     }
 
     /**
@@ -82,8 +100,9 @@ public class StockController {
      * @param name 的名字
      * @return {@link List<Stock>}
      */
+    @GetMapping("/finStockListByType")
     public List<Stock> finStockListByType(String name) {
-        return null;
+        return stockMapper.finStockListByType(name);
     }
 
 }

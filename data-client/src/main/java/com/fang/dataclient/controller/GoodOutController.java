@@ -29,8 +29,6 @@ public class GoodOutController {
     /**
      * 实例StockMapper
      */
-    @Autowired
-    private StockMapper stockMapper;
 
     /**
      * 增加商品出库表项
@@ -43,8 +41,6 @@ public class GoodOutController {
         /**
          * 增加商品出库表项,同步库存表
          */
-        stockMapper.updateStockQuantityDecByGoodId(goodOut.getGoodId(), goodOut.getQuantity());
-        goodOut.setDate(new Date());
         return goodOutMapper.addNewGoodOut(goodOut);
     }
 
@@ -69,16 +65,7 @@ public class GoodOutController {
      */
     @DeleteMapping("/deleteGoodOutById")
     public int deleteGoodOutById(Integer id) {
-        /**
-         * 删除商品出库表项,同步库存表
-         */
-        GoodOut goodOut = goodOutMapper.findGoodOutById(id);
-        int result = goodOutMapper.deleteGoodOutById(id);
-        if (result == 1) {
-            stockMapper.updateStockQuantityIncByGoodId(goodOut.getGoodId(), goodOut.getQuantity());
-            goodOutMapper.alterGoodOutAutoIncrement();
-        }
-        return result;
+        return goodOutMapper.deleteGoodOutById(id);
     }
 
     /**
@@ -89,17 +76,12 @@ public class GoodOutController {
      */
     @PutMapping("/updateGoodOutById")
     public int updateGoodOutById(GoodOut goodOut) {
-        /**
-         * 修改商品出库表项,同步库存表
-         */
-        log.warn(goodOut.toString());
-        Integer oldQuantity = goodOutMapper.findGoodOutById(goodOut.getId()).getQuantity();
-        int result = goodOutMapper.updateGoodOutById(goodOut);
-        if (result == 1) {
-            GoodOut newGoodOut = goodOutMapper.findGoodOutById(goodOut.getId());
-            stockMapper.updateStockQuantityDecByGoodId(newGoodOut.getGoodId(), newGoodOut.getQuantity() - oldQuantity);
-        }
-        return result;
+        return goodOutMapper.updateGoodOutById(goodOut);
+    }
+
+    @GetMapping("/findGoodOutById")
+    GoodOut findGoodOutById(Integer id) {
+        return goodOutMapper.findGoodOutById(id);
     }
 
     /**
@@ -108,8 +90,9 @@ public class GoodOutController {
      * @param name
      * @return
      */
+    @GetMapping("/findGoodOutListByName")
     public List<GoodOut> findGoodOutListByName(String name) {
-        return null;
+        return goodOutMapper.findGoodOutListByName(name);
     }
 
     /**
@@ -118,8 +101,9 @@ public class GoodOutController {
      * @param date
      * @return
      */
+    @GetMapping("/findGoodOutListByDate")
     public List<GoodOut> findGoodOutListByDate(Date date) {
-        return null;
+        return goodOutMapper.findGoodOutListByDate(date);
     }
 
     /**
@@ -128,7 +112,15 @@ public class GoodOutController {
      * @param name
      * @return
      */
+
+    @GetMapping("/findGoodOutListByKeeperName")
     public List<GoodOut> findGoodOutListByKeeperName(String name) {
-        return null;
+        return goodOutMapper.findGoodOutListByKeeperName(name);
     }
+
+    @PutMapping("/alterGoodOutAutoIncrement")
+    public void alterGoodOutAutoIncrement() {
+        goodOutMapper.alterGoodOutAutoIncrement();
+    }
+
 }

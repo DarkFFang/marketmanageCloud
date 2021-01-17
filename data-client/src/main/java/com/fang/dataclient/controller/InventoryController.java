@@ -26,27 +26,12 @@ public class InventoryController {
      */
     @Autowired
     private InventoryMapper inventoryMapper;
-    /**
-     * 库存映射器
-     */
-    @Autowired
-    private StockMapper stockMapper;
 
-    /**
-     * 添加新的盘存列表
-     *
-     * @param inventoryList 盘存清单
-     * @return int
-     */
-    @PostMapping("/addNewInventoryList")
-    public int addNewInventoryList(List<Inventory> inventoryList) {
-        int count=0;
-        for (Inventory inventory:inventoryList){
-            count+=inventoryMapper.addNewInventory(inventory);
-            stockMapper.updateStockQuantityByGoodId(inventory.getGoodId(), inventory.getNewQuantity());
-        }
-        return count;
+    @PostMapping("/addNewInventory")
+    int addNewInventory(Inventory inventory) {
+        return inventoryMapper.addNewInventory(inventory);
     }
+
 
     /**
      * 通过id删除盘存目录
@@ -54,17 +39,14 @@ public class InventoryController {
      * @param id id
      * @return int
      */
+    @DeleteMapping("/deleteInventoryById")
     public int deleteInventoryById(Integer id) {
-        return 0;
+        return inventoryMapper.deleteInventoryById(id);
     }
 
-    /**
-     * 删除所有盘存
-     *
-     * @return int
-     */
-    public int deleteAllInventory() {
-        return 0;
+    @DeleteMapping("/deleteInventoryByDate")
+    public int deleteInventoryByDate(Date date) {
+        return inventoryMapper.deleteInventoryByDate(date);
     }
 
     /**
@@ -72,8 +54,9 @@ public class InventoryController {
      *
      * @return {@link List<Inventory>}
      */
+    @GetMapping("/findInventoryList")
     public List<Inventory> findInventoryList() {
-        return null;
+        return inventoryMapper.findInventoryList();
     }
 
     /**
@@ -82,8 +65,9 @@ public class InventoryController {
      * @param inventory 库存
      * @return int
      */
+    @PutMapping("/updateInventoryListById")
     public int updateInventoryListById(Inventory inventory) {
-        return 0;
+        return inventoryMapper.updateInventoryListById(inventory);
     }
 
     /**
@@ -103,9 +87,7 @@ public class InventoryController {
      * @return int
      */
     @PostMapping("addNewInventoryRecord")
-    public int addNewInventoryRecord() {
-        InventoryRecord inventoryRecord = new InventoryRecord();
-        inventoryRecord.setDate(new Date());
+    public int addNewInventoryRecord(InventoryRecord inventoryRecord) {
         return inventoryMapper.addNewInventoryRecord(inventoryRecord);
     }
 
@@ -125,14 +107,13 @@ public class InventoryController {
      * @param id id
      * @return {@link InventoryRecord}
      */
+    @GetMapping("/findInventoryRecordById")
     public InventoryRecord findInventoryRecordById(Integer id) {
-        return null;
+        return inventoryMapper.findInventoryRecordById(id);
     }
 
     @DeleteMapping("/deleteInventoryRecordById")
     public int deleteInventoryRecordById(Integer id) {
-        InventoryRecord inventoryRecord = inventoryMapper.findInventoryRecordById(id);
-        inventoryMapper.deleteInventoryByDate(inventoryRecord.getDate());
-        return inventoryMapper.deleteInventoryRecordById(inventoryRecord.getId());
+        return inventoryMapper.deleteInventoryRecordById(id);
     }
 }

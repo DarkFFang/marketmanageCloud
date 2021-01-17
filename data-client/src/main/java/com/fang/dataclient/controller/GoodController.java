@@ -4,6 +4,7 @@ package com.fang.dataclient.controller;
 import com.fang.dataclient.dao.GoodMapper;
 import com.fang.dataclient.dao.StockMapper;
 import com.fang.dataclient.entity.Good;
+import com.fang.dataclient.entity.GoodIn;
 import com.fang.dataclient.entity.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

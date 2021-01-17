@@ -26,13 +26,6 @@ public class RefundController {
     @Autowired
     private RefundMapper refundMapper;
     /**
-     * 库存映射器
-     */
-    @Autowired
-    private StockMapper stockMapper;
-
-
-    /**
      * 添加新的退货表项
      *
      * @param refund 退货
@@ -41,8 +34,6 @@ public class RefundController {
 
     @PostMapping("/addNewRefund")
     public int addNewRefund(Refund refund) {
-        stockMapper.updateStockQuantityIncByGoodId(refund.getQuantity(), refund.getGoodId());
-        refund.setDate(new Date());
         return refundMapper.addNewRefund(refund);
     }
 
@@ -84,8 +75,9 @@ public class RefundController {
      * @param name 名字
      * @return {@link List<Refund>}
      */
+    @GetMapping("/findRefundListByName")
     public List<Refund> findRefundListByName(String name) {
-        return null;
+        return refundMapper.findRefundListByName(name);
     }
 
     /**
@@ -94,7 +86,8 @@ public class RefundController {
      * @param date 日期
      * @return {@link List<Refund>}
      */
+    @GetMapping("/findRefundListByDate")
     public List<Refund> findRefundListByDate(Date date) {
-        return null;
+        return refundMapper.findRefundListByDate(date);
     }
 }

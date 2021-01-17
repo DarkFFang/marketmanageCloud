@@ -74,34 +74,30 @@ public class GoodInController {
         return goodInMapper.updateGoodInById(goodIn);
     }
 
+    @GetMapping("/findGoodInById")
+    GoodIn findGoodInById(Integer id) {
+        return goodInMapper.findGoodInById(id);
+    }
+
     /**
      * 通过商品名称查找入库表
      *
      * @param name
      * @return
      */
+    @GetMapping("/findGoodInListByName")
     public List<GoodIn> findGoodInListByName(String name) {
         return goodInMapper.findGoodInListByName(name);
     }
 
-    /**
-     * 通过时间查找入库表
-     *
-     * @param date
-     * @return
-     */
+    @GetMapping("/findGoodInListByDate")
     public List<GoodIn> findGoodInListByDate(Date date) {
-        return null;
+        return goodInMapper.findGoodInListByDate(date);
     }
 
-    /**
-     * 通过库管员名称查找入库表
-     *
-     * @param name
-     * @return
-     */
+    @GetMapping("/findGoodInListByClerkName")
     public List<GoodIn> findGoodInListByClerkName(String name) {
-        return null;
+        return goodInMapper.findGoodInListByClerkName(name);
     }
 
 

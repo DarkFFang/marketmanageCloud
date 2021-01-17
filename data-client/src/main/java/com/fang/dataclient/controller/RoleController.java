@@ -95,7 +95,6 @@ public class RoleController {
      */
     @PutMapping("/updateUserRole")
     public int updateUserRole(Integer userid, Integer roleid) {
-        roleMapper.deleteUserRoleByUserId(userid);
         return roleMapper.addNewUserRole(userid, roleid);
     }
 
@@ -187,7 +186,6 @@ public class RoleController {
      */
     @PutMapping("/updateRolePermissions")
     public int updateRolePermissions(Integer roleid, Integer[] permissionids) {
-        permissionMapper.deleteRolePermissionByRoleId(roleid);
         return permissionMapper.addNewRolePermissions(roleid, permissionids);
     }
 
