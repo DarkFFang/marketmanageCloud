@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: data-client #注册中心显示的名字（服务）
+    name: data-client
   datasource:
     url: jdbc:mysql://localhost:3306/marketmanage?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root

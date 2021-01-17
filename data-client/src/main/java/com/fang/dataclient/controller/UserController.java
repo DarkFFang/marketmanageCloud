@@ -1,23 +1,14 @@
 package com.fang.dataclient.controller;
 
 
-import com.fang.dataclient.config.CustomGrantedAuthority;
 import com.fang.dataclient.dao.PermissionMapper;
 import com.fang.dataclient.dao.RoleMapper;
 import com.fang.dataclient.dao.UserMapper;
-import com.fang.dataclient.entity.JwtUser;
-import com.fang.dataclient.entity.Permission;
 import com.fang.dataclient.entity.User;
 import com.fang.dataclient.entity.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,27 +39,10 @@ public class UserController {
     PermissionMapper permissionMapper;
 
 
-    /**
-     * 加载用户的用户名
-     *
-     * @param phone 电话
-     * @return {@link UserDetails}* @throws UsernameNotFoundException 用户名没有发现异常
-     */
-    @PostMapping("/loadUserByUsername")
-    public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
-        User user=userMapper.findUserByPhone(phone);
-        if(user == null){
-            throw new UsernameNotFoundException(phone+"用户不存在！请联系管理员。");
-        }
-        List<Permission> permissions=permissionMapper.findPermissionsByUserId(user.getId());
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        for (Permission permission : permissions) {
-            if (permission != null && permission.getName() != null) {
-                GrantedAuthority grantedAuthority = new CustomGrantedAuthority(permission.getUrl(), permission.getMethod());
-                authorities.add(grantedAuthority);
-            }
-        }
-        return new JwtUser(user.getId(),user.getUsername(),user.getPhone(),user.getPassword(),authorities);
+
+    @GetMapping("/findUserByPhone")
+    public User findUserByPhone(String phone){
+        return userMapper.findUserByPhone(phone);
     }
 
     /**
