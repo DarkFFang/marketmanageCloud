@@ -31,7 +31,7 @@ public class SupplierController {
      * @return int
      */
     @PostMapping("/addNewSupplier")
-    public int addNewSupplier(Supplier supplier) {
+    public int addNewSupplier(@RequestBody Supplier supplier) {
         return supplierMapper.addNewSupplier(supplier);
     }
 
@@ -63,7 +63,7 @@ public class SupplierController {
      * @return int
      */
     @PutMapping("/updateSupplierById")
-    public int updateSupplierById(Supplier supplier) {
+    public int updateSupplierById(@RequestBody Supplier supplier) {
         return supplierMapper.updateSupplierById(supplier);
     }
 

@@ -33,7 +33,7 @@ public class RefundController {
      */
 
     @PostMapping("/addNewRefund")
-    public int addNewRefund(Refund refund) {
+    public int addNewRefund(@RequestBody Refund refund) {
         return refundMapper.addNewRefund(refund);
     }
 
@@ -65,7 +65,7 @@ public class RefundController {
      * @return int
      */
     @PutMapping("/updateRefundById")
-    public int updateRefundById(Refund refund) {
+    public int updateRefundById(@RequestBody Refund refund) {
         return refundMapper.updateRefundById(refund);
     }
 

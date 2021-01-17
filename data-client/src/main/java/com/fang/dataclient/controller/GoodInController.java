@@ -35,7 +35,7 @@ public class GoodInController {
      * @return int
      */
     @PostMapping("/addNewGoodIn")
-    public int addNewGoodIn(GoodIn goodIn) {
+    public int addNewGoodIn(@RequestBody GoodIn goodIn) {
         return goodInMapper.addNewGoodIn(goodIn);
     }
 
@@ -70,7 +70,7 @@ public class GoodInController {
      * @return
      */
     @PutMapping("/goodin")
-    public int updateGoodInById(GoodIn goodIn) {
+    public int updateGoodInById(@RequestBody GoodIn goodIn) {
         return goodInMapper.updateGoodInById(goodIn);
     }
 

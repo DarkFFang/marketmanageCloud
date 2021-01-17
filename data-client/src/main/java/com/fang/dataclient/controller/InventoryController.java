@@ -28,7 +28,7 @@ public class InventoryController {
     private InventoryMapper inventoryMapper;
 
     @PostMapping("/addNewInventory")
-    public int addNewInventory(Inventory inventory) {
+    public int addNewInventory(@RequestBody Inventory inventory) {
         return inventoryMapper.addNewInventory(inventory);
     }
 
@@ -66,7 +66,7 @@ public class InventoryController {
      * @return int
      */
     @PutMapping("/updateInventoryListById")
-    public int updateInventoryListById(Inventory inventory) {
+    public int updateInventoryListById(@RequestBody Inventory inventory) {
         return inventoryMapper.updateInventoryListById(inventory);
     }
 
@@ -87,7 +87,7 @@ public class InventoryController {
      * @return int
      */
     @PostMapping("addNewInventoryRecord")
-    public int addNewInventoryRecord(InventoryRecord inventoryRecord) {
+    public int addNewInventoryRecord(@RequestBody InventoryRecord inventoryRecord) {
         return inventoryMapper.addNewInventoryRecord(inventoryRecord);
     }
 

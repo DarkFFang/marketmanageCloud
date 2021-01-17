@@ -34,7 +34,7 @@ public class GoodController {
      * @return
      */
     @PostMapping("/addNewGood")
-    public int addNewGood(Good good) {
+    public int addNewGood(@RequestBody Good good) {
         return goodMapper.addNewGood(good);
     }
 
@@ -66,7 +66,7 @@ public class GoodController {
      * @return
      */
     @PutMapping("/updateGoodById")
-    public int updateGoodById(Good good) {
+    public int updateGoodById(@RequestBody Good good) {
         return goodMapper.updateGoodById(good);
     }
 

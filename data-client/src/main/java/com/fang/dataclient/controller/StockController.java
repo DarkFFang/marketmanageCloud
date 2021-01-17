@@ -41,7 +41,7 @@ public class StockController {
      * @return int
      */
     @PostMapping("/addNewStock")
-    public int addNewStock(Stock stock) {
+    public int addNewStock(@RequestBody Stock stock) {
         return stockMapper.addNewStock(stock);
     }
 

@@ -37,7 +37,7 @@ public class GoodOutController {
      * @return
      */
     @PostMapping("/addNewGoodOut")
-    public int addNewGoodOut(GoodOut goodOut) {
+    public int addNewGoodOut(@RequestBody GoodOut goodOut) {
         /**
          * 增加商品出库表项,同步库存表
          */
@@ -75,7 +75,7 @@ public class GoodOutController {
      * @return
      */
     @PutMapping("/updateGoodOutById")
-    public int updateGoodOutById(GoodOut goodOut) {
+    public int updateGoodOutById(@RequestBody GoodOut goodOut) {
         return goodOutMapper.updateGoodOutById(goodOut);
     }
 

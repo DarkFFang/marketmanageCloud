@@ -30,7 +30,7 @@ public class GoodTypeController {
      * @return int
      */
     @PostMapping("/addNewGoodType")
-    public int addNewGoodType(GoodType goodType) {
+    public int addNewGoodType(@RequestBody GoodType goodType) {
         return goodTypeMapper.addNewGoodType(goodType);
     }
 
