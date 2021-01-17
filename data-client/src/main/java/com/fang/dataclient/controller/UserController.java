@@ -15,7 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +53,7 @@ public class UserController {
      * @param phone 电话
      * @return {@link UserDetails}* @throws UsernameNotFoundException 用户名没有发现异常
      */
+    @PostMapping("/loadUserByUsername")
     public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
         User user=userMapper.findUserByPhone(phone);
         if(user == null){
@@ -75,6 +76,7 @@ public class UserController {
      * @param user 用户
      * @return int
      */
+    @PostMapping("/addNewUser")
     public int addNewUser(User user) {
         return userMapper.addNewUser(user);
     }
@@ -85,6 +87,7 @@ public class UserController {
      *
      * @return {@link List<UserVo>}
      */
+    @GetMapping("/findUserList")
     public List<UserVo> findUserList() {
         return userMapper.findUserList();
     }
@@ -95,6 +98,7 @@ public class UserController {
      * @param id id
      * @return {@link User}
      */
+    @GetMapping("/findUserById")
     public User findUserById(Integer id) {
         return userMapper.findUserById(id);
     }
@@ -105,6 +109,7 @@ public class UserController {
      * @param id id
      * @return int
      */
+    @DeleteMapping("/deleteUserById")
     public int deleteUserById(Integer id) {
         int result=userMapper.deleteUserById(id);
         if (result == 1) {
@@ -119,6 +124,7 @@ public class UserController {
      * @param user 用户
      * @return int
      */
+    @PutMapping("/updateUserById")
     public int updateUserById(User user) {
         return userMapper.updateUserById(user);
     }
@@ -129,6 +135,7 @@ public class UserController {
      * @param id id
      * @return int
      */
+    @PutMapping("/updateUserRoleById")
     public int updateUserRoleById(Integer id) {
         return userMapper.updateUserRoleById(id);
     }

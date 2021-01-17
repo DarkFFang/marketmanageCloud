@@ -8,7 +8,7 @@ import com.fang.dataclient.entity.Role;
 import com.fang.dataclient.entity.vo.PermissionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +36,7 @@ public class RoleController {
      *
      * @return {@link List<Role>}
      */
+    @GetMapping("/findAllRole")
     public List<Role> findAllRole() {
         return roleMapper.findAllRole();
     }
@@ -46,6 +47,7 @@ public class RoleController {
      * @param id id
      * @return {@link List<Role>}
      */
+    @GetMapping("/findRolesByUserId")
     public List<Role> findRolesByUserId(Integer id) {
         return roleMapper.findRolesByUserId(id);
     }
@@ -56,6 +58,7 @@ public class RoleController {
      * @param role 角色
      * @return int
      */
+    @PostMapping("/addNewRole")
     public int addNewRole(Role role) {
         return roleMapper.addNewRole(role);
     }
@@ -66,6 +69,7 @@ public class RoleController {
      * @param role 角色
      * @return int
      */
+    @PutMapping("/updateRoleById")
     public int updateRoleById(Role role) {
         return roleMapper.updateRoleById(role);
     }
@@ -76,6 +80,7 @@ public class RoleController {
      * @param id id
      * @return int
      */
+    @DeleteMapping("/deleteRoleById")
     public int deleteRoleById(Integer id) {
         return roleMapper.deleteRoleById(id);
     }
@@ -87,6 +92,7 @@ public class RoleController {
      * @param roleid roleid
      * @return int
      */
+    @PutMapping("/updateUserRole")
     public int updateUserRole(Integer userid, Integer roleid) {
         roleMapper.deleteUserRoleByUserId(userid);
         return roleMapper.addNewUserRole(userid, roleid);
@@ -100,6 +106,7 @@ public class RoleController {
      * @param roleid roleid
      * @return int
      */
+    @PostMapping("/addNewUserRole")
     public int addNewUserRole(Integer userid, Integer roleid) {
         return roleMapper.addNewUserRole(userid, roleid);
     }
@@ -110,6 +117,7 @@ public class RoleController {
      * @param userid 用户标识
      * @return int
      */
+    @DeleteMapping("/deleteUserRoleByUserId")
     public int deleteUserRoleByUserId(Integer userid) {
         return roleMapper.deleteUserRoleByUserId(userid);
     }
@@ -120,6 +128,7 @@ public class RoleController {
      * @param id id
      * @return {@link List<Permission>}
      */
+    @GetMapping("/findPermissionsByUserId")
     public List<Permission> findPermissionsByUserId(Integer id) {
         return permissionMapper.findPermissionsByUserId(id);
     }
@@ -130,6 +139,7 @@ public class RoleController {
      * @param roleid roleid
      * @return {@link List<PermissionVo>}
      */
+    @GetMapping("/findPermissionsByRoleId")
     public List<PermissionVo> findPermissionsByRoleId(Integer roleid) {
         return permissionMapper.findPermissionsByRoleId(roleid);
     }
@@ -140,6 +150,7 @@ public class RoleController {
      * @param id id
      * @return {@link List<PermissionVo>}
      */
+    @GetMapping("/findMenuByUserId")
     public List<PermissionVo> findMenuByUserId(Integer id) {
         return permissionMapper.findMenuByUserId(id);
     }
@@ -149,6 +160,7 @@ public class RoleController {
      *
      * @return {@link List<PermissionVo>}
      */
+    @GetMapping("/findAllPermissions")
     public List<PermissionVo> findAllPermissions() {
         return permissionMapper.findAllPermissions();
     }
@@ -160,6 +172,7 @@ public class RoleController {
      * @param permissionids permissionids
      * @return int
      */
+    @PostMapping("/addNewRolePermissions")
     public int addNewRolePermissions(Integer roleid, Integer[] permissionids) {
         return permissionMapper.addNewRolePermissions(roleid, permissionids);
     }
@@ -171,6 +184,7 @@ public class RoleController {
      * @param permissionids permissionids
      * @return int
      */
+    @PutMapping("/updateRolePermissions")
     public int updateRolePermissions(Integer roleid, Integer[] permissionids) {
         permissionMapper.deleteRolePermissionByRoleId(roleid);
         return permissionMapper.addNewRolePermissions(roleid, permissionids);
@@ -182,6 +196,7 @@ public class RoleController {
      * @param roleid roleid
      * @return int
      */
+    @DeleteMapping("/deleteRolePermissionByRoleId")
     public int deleteRolePermissionByRoleId(Integer roleid) {
         return permissionMapper.deleteRolePermissionByRoleId(roleid);
     }

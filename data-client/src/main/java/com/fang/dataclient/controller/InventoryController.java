@@ -7,6 +7,9 @@ import com.fang.dataclient.entity.Inventory;
 import com.fang.dataclient.entity.InventoryRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -37,6 +40,7 @@ public class InventoryController {
      * @param inventoryList 盘存清单
      * @return int
      */
+    @PostMapping("/addNewInventoryList")
     public int addNewInventoryList(List<Inventory> inventoryList) {
         int count=0;
         for (Inventory inventory:inventoryList){
@@ -90,6 +94,7 @@ public class InventoryController {
      * @param date 日期
      * @return {@link List<Inventory>}
      */
+    @GetMapping("findInventoryListByDate")
     public List<Inventory> findInventoryListByDate(Date date) {
         return inventoryMapper.findInventoryListByDate(date);
     }
@@ -99,6 +104,7 @@ public class InventoryController {
      *
      * @return int
      */
+    @PostMapping("addNewInventoryRecord")
     public int addNewInventoryRecord() {
         InventoryRecord inventoryRecord = new InventoryRecord();
         inventoryRecord.setDate(new Date());
@@ -110,6 +116,7 @@ public class InventoryController {
      *
      * @return {@link List<InventoryRecord>}
      */
+    @GetMapping("/findInventoryRecordList")
     public List<InventoryRecord> findInventoryRecordList() {
         return inventoryMapper.findInventoryRecordList();
     }
@@ -124,6 +131,7 @@ public class InventoryController {
         return null;
     }
 
+    @DeleteMapping("/deleteInventoryRecordById")
     public int deleteInventoryRecordById(Integer id) {
         InventoryRecord inventoryRecord = inventoryMapper.findInventoryRecordById(id);
         inventoryMapper.deleteInventoryByDate(inventoryRecord.getDate());

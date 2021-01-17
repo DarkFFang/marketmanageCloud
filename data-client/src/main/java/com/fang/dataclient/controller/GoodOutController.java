@@ -6,7 +6,7 @@ import com.fang.dataclient.entity.GoodOut;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -37,6 +37,7 @@ public class GoodOutController {
      * @param goodOut
      * @return
      */
+    @PostMapping("/addNewGoodOut")
     public int addNewGoodOut(GoodOut goodOut) {
         /**
          * 增加商品出库表项,同步库存表
@@ -51,6 +52,7 @@ public class GoodOutController {
      *
      * @return
      */
+    @GetMapping("/findGoodOutList")
     public List<GoodOut> findGoodOutList() {
         /**
          * 调用出库列表方法
@@ -64,6 +66,7 @@ public class GoodOutController {
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteGoodOutById")
     public int deleteGoodOutById(Integer id) {
         /**
          * 删除商品出库表项,同步库存表
@@ -83,6 +86,7 @@ public class GoodOutController {
      * @param goodOut
      * @return
      */
+    @PutMapping("/updateGoodOutById")
     public int updateGoodOutById(GoodOut goodOut) {
         /**
          * 修改商品出库表项,同步库存表

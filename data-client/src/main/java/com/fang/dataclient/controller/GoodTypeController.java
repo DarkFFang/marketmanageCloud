@@ -4,6 +4,8 @@ import com.fang.dataclient.dao.GoodTypeMapper;
 import com.fang.dataclient.entity.GoodType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,6 +30,7 @@ public class GoodTypeController {
      * @param goodType 商品类型
      * @return int
      */
+    @PostMapping("/addNewGoodType")
     public int addNewGoodType(GoodType goodType) {
         return goodTypeMapper.addNewGoodType(goodType);
     }
@@ -37,6 +40,7 @@ public class GoodTypeController {
      *
      * @return {@link List<GoodType>}
      */
+    @GetMapping("/findGoodTypeList")
     public List<GoodType> findGoodTypeList() {
         return goodTypeMapper.findGoodTypeList();
     }

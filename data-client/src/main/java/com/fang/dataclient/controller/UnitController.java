@@ -5,6 +5,8 @@ import com.fang.dataclient.dao.UnitMapper;
 import com.fang.dataclient.entity.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,6 +31,7 @@ public class UnitController {
      * @param unit 单位
      * @return int
      */
+    @PostMapping("/addNewUnit")
     public int addNewUnit(Unit unit) {
         return unitMapper.addNewUnit(unit);
     }
@@ -38,6 +41,7 @@ public class UnitController {
      *
      * @return {@link List<Unit>}
      */
+    @GetMapping("/findUnitList")
     public List<Unit> findUnitList() {
         return unitMapper.findUnitList();
     }

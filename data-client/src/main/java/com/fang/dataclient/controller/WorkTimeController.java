@@ -5,7 +5,7 @@ import com.fang.dataclient.dao.WorkTimeMapper;
 import com.fang.dataclient.entity.WorkTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +29,7 @@ public class WorkTimeController {
      * @param worktime 想出
      * @return int
      */
+    @PostMapping("/addNewWorkTime")
     public int addNewWorkTime(WorkTime worktime){return workTimeMapper.addNewWorkTime(worktime);}
 
     /**
@@ -37,6 +38,7 @@ public class WorkTimeController {
      * @param id id
      * @return int
      */
+    @DeleteMapping("/deleteWorkTimeById")
     public int deleteWorkTimeById(Integer id){return workTimeMapper.deleteWorkTimeById(id);}
 
     /**
@@ -45,6 +47,7 @@ public class WorkTimeController {
      * @param worktime 工作时间
      * @return int
      */
+    @PutMapping("/updateWorkTimeById")
     public int updateWorkTimeById(WorkTime worktime){return workTimeMapper.updateWorkTimeById(worktime);}
 
     /**
@@ -52,6 +55,7 @@ public class WorkTimeController {
      *
      * @return {@link List<WorkTime>}
      */
+    @GetMapping("/findWorkTimeList")
     public List<WorkTime> findWorkTimeList(){return workTimeMapper.findWorkTimeList();}
 
     /**

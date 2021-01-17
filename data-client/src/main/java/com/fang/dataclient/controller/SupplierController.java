@@ -5,7 +5,7 @@ import com.fang.dataclient.dao.SupplierMapper;
 import com.fang.dataclient.entity.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +29,7 @@ public class SupplierController {
      * @param supplier 供应商
      * @return int
      */
+    @PostMapping("/addNewSupplier")
     public int addNewSupplier(Supplier supplier) {
         return supplierMapper.addNewSupplier(supplier);
     }
@@ -38,6 +39,7 @@ public class SupplierController {
      *
      * @return {@link List<Supplier>}
      */
+    @GetMapping("/findSupplierList")
     public List<Supplier> findSupplierList() {
         return supplierMapper.findSupplierList();
     }
@@ -48,6 +50,7 @@ public class SupplierController {
      * @param id id
      * @return int
      */
+    @DeleteMapping("/deleteSupplierById")
     public int deleteSupplierById(Integer id) {
         return supplierMapper.deleteSupplierById(id);
     }
@@ -58,6 +61,7 @@ public class SupplierController {
      * @param supplier 供应商
      * @return int
      */
+    @PutMapping("/updateSupplierById")
     public int updateSupplierById(Supplier supplier) {
         return supplierMapper.updateSupplierById(supplier);
     }

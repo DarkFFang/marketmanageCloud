@@ -5,6 +5,9 @@ import com.fang.dataclient.dao.SysLogMapper;
 import com.fang.dataclient.entity.SysLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,6 +32,7 @@ public class SysLogController {
      * @param sysLog 系统日志
      * @return int
      */
+    @PostMapping("/addNewSysLog")
     public int addNewSysLog(SysLog sysLog) {
         return sysLogMapper.addNewSysLog(sysLog);
     }
@@ -39,6 +43,7 @@ public class SysLogController {
      * @param sysLog 系统日志
      * @return int
      */
+    @PostMapping("/addNewLoginLog")
     public int addNewLoginLog(SysLog sysLog) {
         return sysLogMapper.addNewLoginLog(sysLog);
     }
@@ -48,6 +53,7 @@ public class SysLogController {
      *
      * @return {@link List<SysLog>}
      */
+    @GetMapping("/findSysLogList")
     public List<SysLog> findSysLogList() {
         return sysLogMapper.findSysLogList();
     }
@@ -57,14 +63,17 @@ public class SysLogController {
      *
      * @return {@link List<SysLog>}
      */
+    @GetMapping("/findLoginLogList")
     public List<SysLog> findLoginLogList() {
         return sysLogMapper.findLoginLogList();
     }
 
+    @DeleteMapping("/deleteAllSysLog")
     public int deleteAllSysLog() {
         return sysLogMapper.deleteAllSysLog();
     }
 
+    @DeleteMapping("/deleteAllLoginLog")
     public int deleteAllLoginLog() {
         return sysLogMapper.deleteAllLoginLog();
     }

@@ -6,7 +6,7 @@ import com.fang.dataclient.dao.StockMapper;
 import com.fang.dataclient.entity.Refund;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -38,6 +38,7 @@ public class RefundController {
      * @return int
      */
 
+    @PostMapping("/addNewRefund")
     public int addNewRefund(Refund refund) {
         stockMapper.updateStockQuantityIncByGoodId(refund.getQuantity(), refund.getGoodId());
         refund.setDate(new Date());
@@ -49,6 +50,7 @@ public class RefundController {
      *
      * @return {@link List<Refund>}
      */
+    @GetMapping("/findRefundList")
     public List<Refund> findRefundList() {
         return refundMapper.findRefundList();
     }
@@ -59,6 +61,7 @@ public class RefundController {
      * @param id id
      * @return int
      */
+    @DeleteMapping("/deleteRefundById")
     public int deleteRefundById(Integer id) {
         return refundMapper.deleteRefundById(id);
     }
@@ -69,6 +72,7 @@ public class RefundController {
      * @param refund 退货
      * @return int
      */
+    @PutMapping("/updateRefundById")
     public int updateRefundById(Refund refund) {
         return refundMapper.updateRefundById(refund);
     }
