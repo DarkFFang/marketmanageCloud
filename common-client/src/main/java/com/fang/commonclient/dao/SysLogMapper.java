@@ -3,6 +3,7 @@ package com.fang.commonclient.dao;
 import com.fang.commonclient.entity.SysLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +50,8 @@ public interface SysLogMapper {
     @GetMapping("/findLoginLogList")
     List<SysLog> findLoginLogList();
 
+    @DeleteMapping("/deleteAllSysLog")
     int deleteAllSysLog();
-
+    @DeleteMapping("/deleteAllLoginLog")
     int deleteAllLoginLog();
 }

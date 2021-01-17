@@ -73,8 +73,9 @@ public class SupplierController {
      * @param name 名字
      * @return {@link Supplier}
      */
+    @GetMapping("/findSupplierByName")
     public Supplier findSupplierByName(String name) {
-        return null;
+        return supplierMapper.findSupplierByName(name);
     }
 
     /**
@@ -83,7 +84,8 @@ public class SupplierController {
      * @param reputation 声誉
      * @return {@link List<Supplier>}
      */
+    @GetMapping("/findSupplierListByReputation")
     public List<Supplier> findSupplierListByReputation(String reputation) {
-        return null;
+        return supplierMapper.findSupplierListByReputation(reputation);
     }
 }

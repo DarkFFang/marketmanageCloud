@@ -1,14 +1,15 @@
 package com.fang.commonclient.controller.admin;
 
-import com.fang.marketmanage.annotation.CustomLog;
-import com.fang.marketmanage.entity.User;
-import com.fang.marketmanage.entity.vo.UserVo;
-import com.fang.marketmanage.service.UserService;
-import com.fang.marketmanage.util.RedisUtil;
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.annotation.CustomLog;
+import com.fang.commonclient.entity.User;
+import com.fang.commonclient.entity.vo.UserVo;
+import com.fang.commonclient.service.UserService;
+import com.fang.commonclient.util.RedisUtil;
+import com.fang.commonclient.util.RespUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

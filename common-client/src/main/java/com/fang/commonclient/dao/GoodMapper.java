@@ -72,6 +72,7 @@ public interface GoodMapper {
     /**
      * 更新主键自增ID
      */
+    @PutMapping("/alterGoodAutoIncrement")
     void alterGoodAutoIncrement();
 
 }

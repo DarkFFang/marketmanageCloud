@@ -5,10 +5,7 @@ import com.fang.dataclient.dao.UnitMapper;
 import com.fang.dataclient.entity.Unit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,6 +43,11 @@ public class UnitController {
     @GetMapping("/findUnitList")
     public List<Unit> findUnitList() {
         return unitMapper.findUnitList();
+    }
+
+    @PutMapping("/alterAutoIncrement")
+    public void alterAutoIncrement(){
+        unitMapper.alterAutoIncrement();
     }
 
 }

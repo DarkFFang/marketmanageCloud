@@ -86,11 +86,7 @@ public class UserController {
      */
     @DeleteMapping("/deleteUserById")
     public int deleteUserById(Integer id) {
-        int result=userMapper.deleteUserById(id);
-        if (result == 1) {
-            userMapper.alterUserAutoIncrement();
-        }
-        return result;
+        return userMapper.deleteUserById(id);
     }
 
     /**
@@ -121,8 +117,9 @@ public class UserController {
      * @param username 用户名
      * @return {@link List<User>}
      */
+    @GetMapping("/findUserByUsername")
     public List<User> findUserByUsername(String username) {
-        return null;
+        return userMapper.findUserByUsername(username);
     }
 
     /**
@@ -130,8 +127,9 @@ public class UserController {
      *
      * @return {@link List<User>}
      */
+    @GetMapping("/findClerkList")
     public List<User> findClerkList() {
-        return null;
+        return userMapper.findClerkList();
     }
 
     /**
@@ -139,8 +137,9 @@ public class UserController {
      *
      * @return {@link List<User>}
      */
+    @GetMapping("/findKeeperList")
     public List<User> findKeeperList() {
-        return null;
+        return userMapper.findKeeperList();
     }
 
     /**
@@ -148,8 +147,9 @@ public class UserController {
      *
      * @return int
      */
+    @PostMapping("/addPermissionById")
     public int addPermissionById() {
-        return 0;
+        return userMapper.addPermissionById();
     }
 
     /**
@@ -157,8 +157,19 @@ public class UserController {
      *
      * @return int
      */
+    @DeleteMapping("/deletePermissionById")
     public int deletePermissionById() {
-        return 0;
+        return userMapper.deletePermissionById();
+    }
+
+    @GetMapping("/findPermissionById")
+    public int findPermissionById(){
+        return userMapper.findPermissionById();
+    }
+
+    @PutMapping("/alterUserAutoIncrement")
+    public void alterUserAutoIncrement(){
+        userMapper.alterUserAutoIncrement();
     }
 
 }

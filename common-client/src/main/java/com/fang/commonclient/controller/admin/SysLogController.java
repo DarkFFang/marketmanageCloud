@@ -1,8 +1,8 @@
 package com.fang.commonclient.controller.admin;
 
-import com.fang.marketmanage.entity.SysLog;
-import com.fang.marketmanage.service.SysLogService;
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.entity.SysLog;
+import com.fang.commonclient.service.SysLogService;
+import com.fang.commonclient.util.RespUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;

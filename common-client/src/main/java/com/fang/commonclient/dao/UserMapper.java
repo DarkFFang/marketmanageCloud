@@ -113,6 +113,7 @@ public interface UserMapper {
     /**
      * 更新主键自增ID
      */
+    @PutMapping("/alterUserAutoIncrement")
     void alterUserAutoIncrement();
 
 }

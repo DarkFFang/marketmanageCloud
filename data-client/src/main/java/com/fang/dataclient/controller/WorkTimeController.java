@@ -65,6 +65,19 @@ public class WorkTimeController {
      * @param username 用户名
      * @return {@link List<WorkTime>}
      */
-    public List<WorkTime> searchWorkTimeByUsername(String username){return null;}
+    @GetMapping("/searchWorkTimeByUsername")
+    public List<WorkTime> searchWorkTimeByUsername(String username){
+        return workTimeMapper.searchWorkTimeByUsername(username);
+    }
+
+    @GetMapping("/findClerkTime")
+    public List<WorkTime> findClerkTime(){
+        return workTimeMapper.findClerkTime();
+    }
+
+    @GetMapping("/findKeeperTime")
+    public List<WorkTime> findKeeperTime(){
+        return workTimeMapper.findKeeperTime();
+    }
 
 }

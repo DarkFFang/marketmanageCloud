@@ -81,5 +81,6 @@ public interface GoodOutMapper {
     /**
      * 更新主键自增ID
      */
+    @PutMapping("/alterGoodOutAutoIncrement")
     void alterGoodOutAutoIncrement();
 }

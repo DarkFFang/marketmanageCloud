@@ -1,11 +1,12 @@
 package com.fang.commonclient.controller.admin;
 
-import com.fang.marketmanage.entity.vo.PermissionVo;
-import com.fang.marketmanage.service.RoleService;
-import com.fang.marketmanage.util.RedisUtil;
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.entity.vo.PermissionVo;
+import com.fang.commonclient.service.RoleService;
+import com.fang.commonclient.util.RedisUtil;
+import com.fang.commonclient.util.RespUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
