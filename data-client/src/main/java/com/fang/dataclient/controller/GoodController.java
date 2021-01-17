@@ -25,11 +25,6 @@ public class GoodController {
      */
     @Autowired
     private GoodMapper goodMapper;
-    /**
-     * 实例StockMapper
-     */
-    @Autowired
-    private StockMapper stockMapper;
 
     /**
      * 增加商品
@@ -39,17 +34,7 @@ public class GoodController {
      */
     @PostMapping("/addNewGood")
     public int addNewGood(Good good) {
-        Integer id = goodMapper.findMaxId() + 1;
-        good.setId(id);
-        Stock stock = new Stock();
-        stock.setGoodId(good.getId());
-        stock.setUnitId(good.getUnitId());
-        stock.setDate(new Date());
-        int result = goodMapper.addNewGood(good);
-        if (result == 1) {
-            stockMapper.addNewStock(stock);
-        }
-        return result;
+        return goodMapper.addNewGood(good);
     }
 
     /**
@@ -84,14 +69,20 @@ public class GoodController {
         return goodMapper.updateGoodById(good);
     }
 
+    @GetMapping("/findMaxId")
+    public Integer findMaxId(){
+        return goodMapper.findMaxId();
+    }
+
     /**
      * 通过名称查找商品
      *
      * @param name
      * @return
      */
+    @GetMapping("/findGoodByName")
     public Good findGoodByName(String name) {
-        return null;
+        return goodMapper.findGoodByName(name);
     }
 
     /**
@@ -100,13 +91,15 @@ public class GoodController {
      * @param name
      * @return
      */
+    @GetMapping("/findGoodListByType")
     public List<Good> findGoodListByType(String name) {
-        return null;
+        return goodMapper.findGoodListByType(name);
     }
 
     /**
      * 主键自增
      */
+    @PostMapping("/alterGoodAutoIncrement")
     public void alterGoodAutoIncrement() {
         goodMapper.alterGoodAutoIncrement();
     }

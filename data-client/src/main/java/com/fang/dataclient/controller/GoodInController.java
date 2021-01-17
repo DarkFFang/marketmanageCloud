@@ -27,11 +27,6 @@ public class GoodInController {
      */
     @Autowired
     private GoodInMapper goodInMapper;
-    /**
-     * 实例StockMapper
-     */
-    @Autowired
-    private StockMapper stockMapper;
 
     /**
      * 添加新的入库表
@@ -41,11 +36,6 @@ public class GoodInController {
      */
     @PostMapping("/addNewGoodIn")
     public int addNewGoodIn(GoodIn goodIn) {
-        /**
-         * 接收数据，修改库存表和增加商品入库表项
-         */
-        stockMapper.updateStockQuantityIncByGoodId(goodIn.getGoodId(), goodIn.getQuantity());
-        goodIn.setDate(new Date());
         return goodInMapper.addNewGoodIn(goodIn);
     }
 
@@ -70,16 +60,7 @@ public class GoodInController {
      */
     @DeleteMapping("/goodin/{id}")
     public int deleteGoodInById(@PathVariable Integer id) {
-        /**
-         * 删除商品表项后，同步库存表数据
-         */
-        GoodIn goodIn = goodInMapper.findGoodInById(id);
-        int result = goodInMapper.deleteGoodInById(id);
-        if (result == 1) {
-            stockMapper.updateStockQuantityDecByGoodId(goodIn.getGoodId(), goodIn.getQuantity());
-            goodInMapper.alterGoodInAutoIncrement();
-        }
-        return result;
+        return goodInMapper.deleteGoodInById(id);
     }
 
     /**
@@ -90,17 +71,7 @@ public class GoodInController {
      */
     @PutMapping("/goodin")
     public int updateGoodInById(GoodIn goodIn) {
-        /**
-         * 修改入库表项后，同步库存表
-         */
-        log.warn(goodIn.toString());
-        Integer oldQuantity = goodInMapper.findGoodInById(goodIn.getId()).getQuantity();
-        int result = goodInMapper.updateGoodInById(goodIn);
-        if (result == 1) {
-            GoodIn newGoodIn = goodInMapper.findGoodInById(goodIn.getId());
-            stockMapper.updateStockQuantityIncByGoodId(newGoodIn.getGoodId(), newGoodIn.getQuantity() - oldQuantity);
-        }
-        return result;
+        return goodInMapper.updateGoodInById(goodIn);
     }
 
     /**
@@ -110,7 +81,7 @@ public class GoodInController {
      * @return
      */
     public List<GoodIn> findGoodInListByName(String name) {
-        return null;
+        return goodInMapper.findGoodInListByName(name);
     }
 
     /**
@@ -131,5 +102,11 @@ public class GoodInController {
      */
     public List<GoodIn> findGoodInListByClerkName(String name) {
         return null;
+    }
+
+
+    @PutMapping("/alterGoodInAutoIncrement")
+    public void alterGoodInAutoIncrement(){
+        goodInMapper.alterGoodInAutoIncrement();
     }
 }
