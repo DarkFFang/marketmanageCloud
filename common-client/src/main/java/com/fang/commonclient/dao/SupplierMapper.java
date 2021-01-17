@@ -2,6 +2,8 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Supplier;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -11,7 +13,8 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/supplier")
 public interface SupplierMapper {
 
     /**
@@ -19,12 +22,14 @@ public interface SupplierMapper {
      * @param supplier
      * @return
      */
+    @PostMapping("/addNewSupplier")
     int addNewSupplier(Supplier supplier);
 
     /**
      * 供应商列表
      * @return
      */
+    @GetMapping("/findSupplierList")
     List<Supplier> findSupplierList();
 
     /**
@@ -32,6 +37,7 @@ public interface SupplierMapper {
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteSupplierById")
     int deleteSupplierById(Integer id);
 
     /**
@@ -39,6 +45,7 @@ public interface SupplierMapper {
      * @param supplier
      * @return
      */
+    @PutMapping("/updateSupplierById")
     int updateSupplierById(Supplier supplier);
 
     /**

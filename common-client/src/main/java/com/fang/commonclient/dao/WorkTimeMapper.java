@@ -2,6 +2,8 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.WorkTime;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -11,7 +13,8 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/workTime")
 public interface WorkTimeMapper {
 
     /**
@@ -19,6 +22,7 @@ public interface WorkTimeMapper {
      * @param worktime
      * @return
      */
+    @PostMapping("/addNewWorkTime")
     int addNewWorkTime(WorkTime worktime);
 
     /**
@@ -26,6 +30,7 @@ public interface WorkTimeMapper {
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteWorkTimeById")
     int deleteWorkTimeById(Integer id);
 
     /**
@@ -33,12 +38,14 @@ public interface WorkTimeMapper {
      * @param worktime
      * @return
      */
+    @PutMapping("/updateWorkTimeById")
     int updateWorkTimeById(WorkTime worktime);
 
     /**
      * 时间表列表
      * @return
      */
+    @GetMapping("/findWorkTimeList")
     List<WorkTime> findWorkTimeList();
 
     /**

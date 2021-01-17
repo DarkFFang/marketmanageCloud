@@ -2,6 +2,8 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -11,7 +13,8 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/role")
 public interface RoleMapper {
 
     /**
@@ -19,12 +22,14 @@ public interface RoleMapper {
      * @param id
      * @return
      */
+    @GetMapping("/findRolesByUserId")
     List<Role> findRolesByUserId(Integer id);
 
     /**
      * 查询所有权限列表
      * @return
      */
+    @GetMapping("/findAllRole")
     List<Role> findAllRole();
 
     /**
@@ -32,6 +37,7 @@ public interface RoleMapper {
      * @param role
      * @return
      */
+    @PostMapping("/addNewRole")
     int addNewRole(Role role);
 
     /**
@@ -39,6 +45,7 @@ public interface RoleMapper {
      * @param role
      * @return
      */
+    @PutMapping("/updateRoleById")
     int updateRoleById(Role role);
 
     /**
@@ -46,6 +53,7 @@ public interface RoleMapper {
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteRoleById")
     int deleteRoleById(Integer id);
 
     /**
@@ -54,6 +62,7 @@ public interface RoleMapper {
      * @param roleid
      * @return
      */
+    @PostMapping("/addNewUserRole")
     int addNewUserRole(Integer userid, Integer roleid);
 
     /**
@@ -61,6 +70,7 @@ public interface RoleMapper {
      * @param userid
      * @return
      */
+    @DeleteMapping("/deleteUserRoleByUserId")
     int deleteUserRoleByUserId(Integer userid);
 
 }

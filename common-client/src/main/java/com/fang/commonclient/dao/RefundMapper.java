@@ -2,6 +2,8 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Refund;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -12,7 +14,8 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/refund")
 public interface RefundMapper {
 
     /**
@@ -20,12 +23,14 @@ public interface RefundMapper {
      * @param refund
      * @return
      */
+    @PostMapping("/addNewRefund")
     int addNewRefund(Refund refund);
 
     /**
      * 退货列表
      * @return
      */
+    @GetMapping("/findRefundList")
     List<Refund> findRefundList();
 
     /**
@@ -33,6 +38,7 @@ public interface RefundMapper {
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteRefundById")
     int deleteRefundById(Integer id);
 
     /**
@@ -40,6 +46,7 @@ public interface RefundMapper {
      * @param refund
      * @return
      */
+    @PutMapping("/updateRefundById")
     int updateRefundById(Refund refund);
 
     /**

@@ -2,6 +2,8 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Stock;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -11,13 +13,15 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/stock")
 public interface StockMapper {
 
     /**
      * 库存列表
      * @return
      */
+    @GetMapping("/findStockList")
     List<Stock> findStockList();
 
     /**
@@ -25,6 +29,7 @@ public interface StockMapper {
      * @param stock
      * @return
      */
+    @PostMapping("/addNewStock")
     int addNewStock(Stock stock);
 
     /**
@@ -32,6 +37,7 @@ public interface StockMapper {
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteStockById")
     int deleteStockById(Integer id);
 
     /**
@@ -40,6 +46,7 @@ public interface StockMapper {
      * @param increment
      * @return
      */
+    @PutMapping("/updateStockQuantityIncByGoodId")
     int updateStockQuantityIncByGoodId(Integer goodid, Integer increment);
 
     /**
@@ -48,6 +55,7 @@ public interface StockMapper {
      * @param decrement
      * @return
      */
+    @PutMapping("/updateStockQuantityDecByGoodId")
     int updateStockQuantityDecByGoodId(Integer goodid, Integer decrement);
 
     /**
@@ -56,6 +64,7 @@ public interface StockMapper {
      * @param newQuantity
      * @return
      */
+    @PutMapping("/updateStockQuantityByGoodId")
     int updateStockQuantityByGoodId(Integer goodid, Integer newQuantity);
 
     /**

@@ -3,6 +3,8 @@ package com.fang.commonclient.dao;
 import com.fang.commonclient.entity.User;
 import com.fang.commonclient.entity.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,7 +14,8 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/user")
 public interface UserMapper {
 
     /**
@@ -20,12 +23,14 @@ public interface UserMapper {
      * @param user
      * @return
      */
+    @PostMapping("/addNewUser")
     int addNewUser(User user);
 
     /**
      * 用户列表（营业员和库管员）
      * @return
      */
+    @GetMapping("/findUserList")
     List<UserVo> findUserList();
 
     /**
@@ -33,6 +38,7 @@ public interface UserMapper {
      * @param id
      * @return
      */
+    @GetMapping("/findUserById")
     User findUserById(Integer id);
 
     /**
@@ -40,6 +46,7 @@ public interface UserMapper {
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteUserById")
     int deleteUserById(Integer id);
 
     /**
@@ -47,6 +54,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
+    @PutMapping("/updateUserById")
     int updateUserById(User user);
 
     /**
@@ -54,6 +62,7 @@ public interface UserMapper {
      * @param id
      * @return
      */
+    @PutMapping("/updateUserRoleById")
     int updateUserRoleById(Integer id);
 
     /**
@@ -68,6 +77,7 @@ public interface UserMapper {
      * @param phone
      * @return
      */
+    @GetMapping("/findUserByPhone")
     User findUserByPhone(String phone);
 
     /**

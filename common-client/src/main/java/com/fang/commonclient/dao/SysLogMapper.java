@@ -2,6 +2,10 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.SysLog;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -11,7 +15,8 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/sysLog")
 public interface SysLogMapper {
 
     /**
@@ -19,6 +24,7 @@ public interface SysLogMapper {
      * @param sysLog
      * @return
      */
+    @PostMapping("/addNewSysLog")
     int addNewSysLog(SysLog sysLog);
 
     /**
@@ -26,18 +32,21 @@ public interface SysLogMapper {
      * @param sysLog
      * @return
      */
+    @PostMapping("/addNewLoginLog")
     int addNewLoginLog(SysLog sysLog);
 
     /**
      * 系统日志列表
      * @return
      */
+    @GetMapping("/findSysLogList")
     List<SysLog> findSysLogList();
 
     /**
      * 登录日志列表
      * @return
      */
+    @GetMapping("/findLoginLogList")
     List<SysLog> findLoginLogList();
 
     int deleteAllSysLog();
