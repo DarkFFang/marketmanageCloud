@@ -1,0 +1,16 @@
+server:
+  port: 8080 #当前服务器地址
+spring:
+  application:
+    name: eureka-server #服务器名字
+
+eureka:
+  client:
+    register-with-eureka: false #自己不注册
+    fetch-registry: false #不用去检索服务
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+
+  server:
+    enable-self-preservation: false #关闭自我保护（当客户端断掉会从列表移出）
+    eviction-interval-timer-in-ms: 5000 #清理间隔

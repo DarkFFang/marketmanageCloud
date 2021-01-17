@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fang.marketmanage.dao.GoodMapper">
+    <resultMap id="goodResultMap" type="com.fang.marketmanage.entity.Good">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="typeId" column="typeid"/>
+        <result property="sDate" column="sdate"/>
+        <result property="eDate" column="edate"/>
+        <result property="price" column="price"/>
+        <result property="unitId" column="unitid"/>
+        <result property="other" column="other"/>
+    </resultMap>
+    <insert id="addNewGood" parameterType="com.fang.marketmanage.entity.Good">
+        INSERT INTO good(name,typeId,sDate,eDate,price,unitId,other)
+        VALUES (#{name},#{typeId},#{sDate},#{eDate},#{price},#{unitId},#{other})
+    </insert>
+    <select id="findMaxId" resultType="Integer">
+    SELECT id
+    FROM  good
+    ORDER BY id DESC LIMIT 1
+    </select>
+    <select id="findGoodList" resultMap="goodResultMap">
+        SELECT * FROM good
+    </select>
+    <delete id="deleteGoodById">
+        DELETE FROM good where id=#{id}
+    </delete>
+    <update id="updateGoodById">
+        UPDATE good g
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                g.name = #{name},
+            </if>
+            <if test="typeId != null">
+                g.typeid = #{typeId},
+            </if>
+            <if test="sDate != null">
+                g.sdate = #{sDate},
+            </if>
+            <if test="eDate != null">
+                g.edate = #{eDate},
+            </if>
+            <if test="price != null and price != '' or price == 0">
+                g.price = #{price},
+            </if>
+            <if test="unitId != null and unitId != ''">
+                g.unitid = #{unitId},
+            </if>
+            <if test="other != null and other != ''">
+                g.other = #{other},
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+    <select id="findGoodByName" resultMap="goodResultMap">
+        SELECT * FROM good WHERE name=#{name}
+    </select>
+    <select id="findGoodListByType" resultMap="goodResultMap">
+        SELECT * FROM good WHERE typeid=(SELECT id FROM goodtype WHERE name=#{name})
+    </select>
+    <update id="alterGoodAutoIncrement">
+        ALTER TABLE good auto_increment = 1
+    </update>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fang.marketmanage.dao.RoleMapper">
+    <resultMap id="roleResultMap" type="com.fang.marketmanage.entity.Role">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <select id="findRolesByUserId" resultMap="roleResultMap">
+        SELECT * FROM role
+        WHERE id in (SELECT roleid FROM user_role WHERE userid=#{id})
+    </select>
+    <select id="findAllRole" resultMap="roleResultMap">
+        SELECT * FROM role
+    </select>
+    <insert id="addNewRole" parameterType="com.fang.marketmanage.entity.Role">
+        INSERT INTO role(name) VALUES (#{name})
+    </insert>
+    <update id="updateRoleById" parameterType="com.fang.marketmanage.entity.Role">
+        UPDATE role
+        SET name=#{name}
+        WHERE id=#{id}
+    </update>
+    <delete id="deleteRoleById">
+        DELETE FROM role
+        WHERE id=#{id}
+    </delete>
+    <insert id="addNewUserRole">
+        INSERT INTO user_role(userid,roleid) VALUES (#{userid},#{roleid})
+    </insert>
+    <delete id="deleteUserRoleByUserId">
+        DELETE FROM user_role
+        WHERE userid=#{userid}
+    </delete>
+</mapper>

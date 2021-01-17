@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fang.marketmanage.dao.InventoryMapper">
+    <resultMap id="inventoryResultMap" type="com.fang.marketmanage.entity.Inventory">
+        <id property="goodId" column="goodid"/>
+        <result property="date" column="date"/>
+        <result property="goodName" column="goodname"/>
+        <result property="quantity" column="quantity"/>
+        <result property="newQuantity" column="newquantity"/>
+        <result property="unitId" column="unitid"/>
+        <result property="yk" column="yk"/>
+        <result property="other" column="other"/>
+    </resultMap>
+    <insert id="addNewInventory" parameterType="com.fang.marketmanage.entity.Inventory">
+        INSERT INTO inventory
+        VALUES (#{goodId},#{date},#{goodName},#{quantity},#{newQuantity},#{unitId},#{yk},#{other})
+    </insert>
+    <select id="findInventoryList" resultMap="inventoryResultMap">
+        SELECT * FROM inventory
+    </select>
+    <update id="updateInventoryListById">
+        UPDATE inventory SET newquantity=#{newQuantity} WHERE goodid=#{goodId} and date=#{date}
+    </update>
+    <select id="findInventoryListByDate" resultMap="inventoryResultMap">
+        SELECT * FROM inventory
+        WHERE date=#{date}
+    </select>
+    <delete id="deleteInventoryById">
+        DELETE FROM inventory WHERE id=#{id} AND date=#{date}
+    </delete>
+    <delete id="deleteInventoryByDate">
+        DELETE FROM inventory
+        WHERE date=#{date}
+    </delete>
+    <insert id="addNewInventoryRecord" parameterType="com.fang.marketmanage.entity.InventoryRecord">
+        INSERT INTO inventory_record(date) VALUES (#{date})
+    </insert>
+    <select id="findInventoryRecordList" resultType="com.fang.marketmanage.entity.InventoryRecord">
+        SELECT * FROM inventory_record
+    </select>
+    <select id="findInventoryRecordById" resultType="com.fang.marketmanage.entity.InventoryRecord">
+        SELECT * FROM inventory_record
+        WHERE id=#{id}
+    </select>
+    <delete id="deleteInventoryRecordById">
+        DELETE FROM inventory_record
+        WHERE id=#{id}
+    </delete>
+</mapper>
