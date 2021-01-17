@@ -1,4 +1,4 @@
-package com.fang.dataclient.config;
+package com.fang.commonclient.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
