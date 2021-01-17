@@ -15,3 +15,6 @@ zuul:
     data:
       path: /data/**
       serviceId: data-client
+    common:
+      path: /common/**
+      serviceId: common-client
