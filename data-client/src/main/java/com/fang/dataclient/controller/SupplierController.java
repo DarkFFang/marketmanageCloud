@@ -22,7 +22,7 @@ public class SupplierController {
      * 供应商映射器
      */
     @Autowired
-    SupplierMapper supplierMapper;
+    private SupplierMapper supplierMapper;
 
     /**
      * 增加新的供应商

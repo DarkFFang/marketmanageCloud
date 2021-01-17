@@ -24,19 +24,7 @@ public class UserController {
      * 用户映射器
      */
     @Autowired
-    UserMapper userMapper;
-
-    /**
-     * 角色映射器
-     */
-    @Autowired
-    RoleMapper roleMapper;
-
-    /**
-     * 许可映射器
-     */
-    @Autowired
-    PermissionMapper permissionMapper;
+    private UserMapper userMapper;
 
 
 
