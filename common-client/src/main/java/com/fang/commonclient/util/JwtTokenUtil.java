@@ -1,6 +1,6 @@
 package com.fang.commonclient.util;
 
-import com.fang.marketmanage.entity.JwtUser;
+import com.fang.commonclient.entity.JwtUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

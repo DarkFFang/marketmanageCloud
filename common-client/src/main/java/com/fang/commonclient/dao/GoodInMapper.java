@@ -2,6 +2,9 @@ package com.fang.commonclient.dao;
 
 import com.fang.marketmanage.entity.GoodIn;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -12,13 +15,14 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
 public interface GoodInMapper {
     /**
      * 添加入库单
      * @param goodin
      * @return
      */
+    @PostMapping("/goodIn/adNewGoodIn")
     int addNewGoodIn(GoodIn goodin);
 
     /**
