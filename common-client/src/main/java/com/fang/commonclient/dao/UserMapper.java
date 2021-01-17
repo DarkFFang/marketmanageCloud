@@ -2,7 +2,6 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.User;
 import com.fang.commonclient.entity.vo.UserVo;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +13,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/user")
+@FeignClient(value = "data-client",contextId = "userMapper")
 public interface UserMapper {
 
     /**
@@ -23,14 +21,14 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    @PostMapping("/addNewUser")
-    int addNewUser(User user);
+    @PostMapping("/user/addNewUser")
+    int addNewUser(@RequestParam User user);
 
     /**
      * 用户列表（营业员和库管员）
      * @return
      */
-    @GetMapping("/findUserList")
+    @GetMapping("/user/findUserList")
     List<UserVo> findUserList();
 
     /**
@@ -38,15 +36,15 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    @GetMapping("/findUserById")
-    User findUserById(Integer id);
+    @GetMapping("/user/findUserById")
+    User findUserById(@RequestParam Integer id);
 
     /**
      * 删除用户（营业员或库管员）
      * @param id
      * @return
      */
-    @DeleteMapping("/deleteUserById")
+    @DeleteMapping("/user/deleteUserById")
     int deleteUserById(Integer id);
 
     /**
@@ -54,7 +52,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    @PutMapping("/updateUserById")
+    @PutMapping("/user/updateUserById")
     int updateUserById(User user);
 
     /**
@@ -62,58 +60,58 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    @PutMapping("/updateUserRoleById")
-    int updateUserRoleById(Integer id);
+    @PutMapping("/user/updateUserRoleById")
+    int updateUserRoleById(@RequestParam Integer id);
 
     /**
      * 通过用户名（营业员或库管员）查询用户
      * @param username
      * @return
      */
-    List<User> findUserByUsername(String username);
+//    List<User> findUserByUsername(String username);
 
     /**
      * 通过电话查找用户
      * @param phone
      * @return
      */
-    @GetMapping("/findUserByPhone")
-    User findUserByPhone(String phone);
+    @GetMapping("/user/findUserByPhone")
+    User findUserByPhone(@RequestParam String phone);
 
     /**
      * 搜索营业员列表
      * @return
      */
-    List<User> findClerkList();
+//    List<User> findClerkList();
 
     /**
      * 搜索库管员列表
      * @return
      */
-    List<User> findKeeperList();
+//    List<User> findKeeperList();
 
     /**
      * 增加用户权限
      * @return
      */
-    int addPermissionById();
+//    int addPermissionById();
 
     /**
      * 删除用户权限
      * @return
      */
-    int deletePermissionById();
+//    int deletePermissionById();
 
     /**
      * 查询用户权限
      * @return
      */
-    int findPermissionById();
+//    int findPermissionById();
 
     /**
      * 更新主键自增ID
      */
-    @PutMapping("/alterUserAutoIncrement")
+    @PutMapping("/user/alterUserAutoIncrement")
     void alterUserAutoIncrement();
 
 }

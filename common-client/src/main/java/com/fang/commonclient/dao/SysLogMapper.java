@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.SysLog;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +15,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/sysLog")
+@FeignClient(value = "data-client",contextId = "SysLog")
 public interface SysLogMapper {
 
     /**
@@ -25,7 +23,7 @@ public interface SysLogMapper {
      * @param sysLog
      * @return
      */
-    @PostMapping("/addNewSysLog")
+    @PostMapping("/sysLog/addNewSysLog")
     int addNewSysLog(SysLog sysLog);
 
     /**
@@ -33,25 +31,25 @@ public interface SysLogMapper {
      * @param sysLog
      * @return
      */
-    @PostMapping("/addNewLoginLog")
+    @PostMapping("/sysLog/addNewLoginLog")
     int addNewLoginLog(SysLog sysLog);
 
     /**
      * 系统日志列表
      * @return
      */
-    @GetMapping("/findSysLogList")
+    @GetMapping("/sysLog/findSysLogList")
     List<SysLog> findSysLogList();
 
     /**
      * 登录日志列表
      * @return
      */
-    @GetMapping("/findLoginLogList")
+    @GetMapping("/sysLog/findLoginLogList")
     List<SysLog> findLoginLogList();
 
-    @DeleteMapping("/deleteAllSysLog")
+    @DeleteMapping("/sysLog/deleteAllSysLog")
     int deleteAllSysLog();
-    @DeleteMapping("/deleteAllLoginLog")
+    @DeleteMapping("/sysLog/deleteAllLoginLog")
     int deleteAllLoginLog();
 }

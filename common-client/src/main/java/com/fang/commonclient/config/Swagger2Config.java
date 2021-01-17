@@ -37,7 +37,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.fang.marketmanage"))
+                .apis(RequestHandlerSelectors.basePackage("com.fang.commonclient"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(securitySchemes())
@@ -93,7 +93,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("超市商品管理")
                 .description("API接口文档")
-                .termsOfServiceUrl("https://github.com/DarkFFang/marketmanage")
+                .termsOfServiceUrl("https://github.com/DarkFFang/marketmanageCloud")
                 .version("1.0.0")
                 .build();
     }

@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.GoodIn;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,22 +13,21 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/goodIn")
+@FeignClient(value = "data-client",contextId ="GoodIn" )
 public interface GoodInMapper {
     /**
      * 添加入库单
      * @param goodin
      * @return
      */
-    @PostMapping("/addNewGoodIn")
-    int addNewGoodIn(GoodIn goodin);
+    @PostMapping("/goodIn/addNewGoodIn")
+    int addNewGoodIn(@RequestParam("goodin") GoodIn goodin);
 
     /**
      * 入库单列表
      * @return
      */
-    @GetMapping("/findGoodInList")
+    @GetMapping("/goodIn/findGoodInList")
     List<GoodIn> findGoodInList();
 
     /**
@@ -37,15 +35,15 @@ public interface GoodInMapper {
      * @param id
      * @return
      */
-    @DeleteMapping("/deleteGoodInById")
-    int deleteGoodInById(Integer id);
+    @DeleteMapping("/goodIn/deleteGoodInById")
+    int deleteGoodInById(@RequestParam("id") Integer id);
 
     /**
      * 修改入库单信息
      * @param goodIn
      * @return
      */
-    @PutMapping("/updateGoodInById")
+    @PutMapping("/goodIn/updateGoodInById")
     int updateGoodInById(GoodIn goodIn);
 
     /**
@@ -53,7 +51,7 @@ public interface GoodInMapper {
      * @param id
      * @return
      */
-    @GetMapping("/findGoodInById")
+    @GetMapping("/goodIn/findGoodInById")
     GoodIn findGoodInById(Integer id);
 
     /**
@@ -61,25 +59,25 @@ public interface GoodInMapper {
      * @param name
      * @return
      */
-    List<GoodIn> findGoodInListByName(String name);
+//    List<GoodIn> findGoodInListByName(String name);
 
     /**
      * 通过时间查询入库单列表
      * @param date
      * @return
      */
-    List<GoodIn> findGoodInListByDate(Date date);
+//    List<GoodIn> findGoodInListByDate(Date date);
 
     /**
      * 通过库管员姓名查询入库单列表
      * @param name
      * @return
      */
-    List<GoodIn> findGoodInListByClerkName(String name);
+//    List<GoodIn> findGoodInListByClerkName(String name);
 
     /**
      * 更新主键自增ID
      */
-    @PutMapping("/alterGoodInAutoIncrement")
+    @PutMapping("/goodIn/alterGoodInAutoIncrement")
     void alterGoodInAutoIncrement();
 }

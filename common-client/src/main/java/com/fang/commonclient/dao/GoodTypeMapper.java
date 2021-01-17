@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.GoodType;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,27 +15,26 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/goodType")
+@FeignClient(value = "data-client",contextId = "GoodType")
 public interface GoodTypeMapper {
     /**
      * 增加用户类型
      * @param goodType
      * @return
      */
-    @PostMapping("/addNewGoodType")
+    @PostMapping("/goodType/addNewGoodType")
     int addNewGoodType(GoodType goodType);
 
     /**
      * 商品类型列表
      * @return
      */
-    @GetMapping("/findGoodTypeList")
+    @GetMapping("/goodType/findGoodTypeList")
     List<GoodType> findGoodTypeList();
 
     /**
      * 更新主键自增ID
      */
-    @PutMapping("/alterAutoIncrement")
+    @PutMapping("/goodType/alterAutoIncrement")
     void alterAutoIncrement();
 }

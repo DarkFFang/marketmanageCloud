@@ -2,7 +2,7 @@ server:
   port: 80
 spring:
   application:
-    name: zuul
+    name: zuul-service
 #Eureka客户端的配置
 eureka:
   instance:

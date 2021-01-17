@@ -2,7 +2,6 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Inventory;
 import com.fang.commonclient.entity.InventoryRecord;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +17,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/Inventory")
+@FeignClient(value = "data-client",contextId = "Inventory")
 public interface InventoryMapper {
 
     /**
@@ -27,7 +25,7 @@ public interface InventoryMapper {
      * @param inventory
      * @return
      */
-    @PostMapping("/addNewInventory")
+    @PostMapping("/inventory/addNewInventory")
     int addNewInventory(Inventory inventory);
 
     /**
@@ -35,34 +33,34 @@ public interface InventoryMapper {
      * @param id
      * @return
      */
-    int deleteInventoryById(Integer id);
+//    int deleteInventoryById(Integer id);
 
     /**
      * 删除所有盘存表
      * @return
      */
-    @DeleteMapping("/deleteInventoryByDate")
+    @DeleteMapping("/inventory/deleteInventoryByDate")
     int deleteInventoryByDate(Date date);
 
     /**
      * 盘存列表
      * @return
      */
-    List<Inventory> findInventoryList();
+//    List<Inventory> findInventoryList();
 
     /**
      * 修改盘存表(仅修改实际数量)
      * @param inventory
      * @return
      */
-    int updateInventoryListById(Inventory inventory);
+//    int updateInventoryListById(Inventory inventory);
 
     /**
      * 通过时间查询盘存表
      * @param date
      * @return
      */
-    @GetMapping("/findInventoryListByDate")
+    @GetMapping("/inventory/findInventoryListByDate")
     List<Inventory> findInventoryListByDate(Date date);
 
     /**
@@ -70,14 +68,14 @@ public interface InventoryMapper {
      * @param inventoryRecord
      * @return
      */
-    @PostMapping("/addNewInventoryRecord")
+    @PostMapping("/inventory/addNewInventoryRecord")
     int addNewInventoryRecord(InventoryRecord inventoryRecord);
 
     /**
      * 盘存目录列表
      * @return
      */
-    @GetMapping("/findInventoryRecordList")
+    @GetMapping("/inventory/findInventoryRecordList")
     List<InventoryRecord> findInventoryRecordList();
 
     /**
@@ -85,10 +83,10 @@ public interface InventoryMapper {
      * @param id
      * @return
      */
-    @GetMapping("/findInventoryRecordById")
+    @GetMapping("/inventory/findInventoryRecordById")
     InventoryRecord findInventoryRecordById(Integer id);
 
-    @DeleteMapping("/deleteInventoryRecordById")
+    @DeleteMapping("/inventory/deleteInventoryRecordById")
     int deleteInventoryRecordById(Integer id);
 
 }

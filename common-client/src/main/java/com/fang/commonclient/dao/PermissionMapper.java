@@ -2,12 +2,8 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Permission;
 import com.fang.commonclient.entity.vo.PermissionVo;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +13,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/Permission")
+@FeignClient(value = "data-client",contextId = "Permission")
 public interface PermissionMapper {
 
     /**
@@ -26,22 +21,22 @@ public interface PermissionMapper {
      * @param id
      * @return
      */
-    @GetMapping("/findPermissionsByUserId")
-    List<Permission> findPermissionsByUserId(Integer id);
+    @GetMapping("/permission/findPermissionsByUserId")
+    List<Permission> findPermissionsByUserId(@RequestParam Integer id);
 
     /**
      * 通过角色编号查询权限
      * @param id
      * @return
      */
-    @GetMapping("/findPermissionsByRoleId")
+    @GetMapping("/permission/findPermissionsByRoleId")
     List<PermissionVo> findPermissionsByRoleId(Integer id);
 
     /**
      * 权限列表
      * @return
      */
-    @GetMapping("/findAllPermissions")
+    @GetMapping("/permission/findAllPermissions")
     List<PermissionVo> findAllPermissions();
 
     /**
@@ -49,7 +44,7 @@ public interface PermissionMapper {
      * @param id
      * @return
      */
-    @GetMapping("/findMenuByUserId")
+    @GetMapping("/permission/findMenuByUserId")
     List<PermissionVo> findMenuByUserId(Integer id);
 
     /**
@@ -58,14 +53,14 @@ public interface PermissionMapper {
      * @param permissionids
      * @return
      */
-    @PostMapping("/addNewRolePermissions")
-    int addNewRolePermissions(Integer roleid, Integer[] permissionids);
+    @PostMapping("/permission/addNewRolePermissions")
+    int addNewRolePermissions(@RequestParam Integer roleid,@RequestParam Integer[] permissionids);
 
     /**
      * 通过角色编号删除角色权限
      * @param roleid
      * @return
      */
-    @DeleteMapping("/deleteRolePermissionByRoleId")
+    @DeleteMapping("/permission/deleteRolePermissionByRoleId")
     int deleteRolePermissionByRoleId(Integer roleid);
 }

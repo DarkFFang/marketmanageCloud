@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Supplier;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/supplier")
+@FeignClient(value = "data-client",contextId = "Supplier")
 public interface SupplierMapper {
 
     /**
@@ -22,14 +20,14 @@ public interface SupplierMapper {
      * @param supplier
      * @return
      */
-    @PostMapping("/addNewSupplier")
+    @PostMapping("/supplier/addNewSupplier")
     int addNewSupplier(Supplier supplier);
 
     /**
      * 供应商列表
      * @return
      */
-    @GetMapping("/findSupplierList")
+    @GetMapping("/supplier/findSupplierList")
     List<Supplier> findSupplierList();
 
     /**
@@ -37,7 +35,7 @@ public interface SupplierMapper {
      * @param id
      * @return
      */
-    @DeleteMapping("/deleteSupplierById")
+    @DeleteMapping("/supplier/deleteSupplierById")
     int deleteSupplierById(Integer id);
 
     /**
@@ -45,7 +43,7 @@ public interface SupplierMapper {
      * @param supplier
      * @return
      */
-    @PutMapping("/updateSupplierById")
+    @PutMapping("/supplier/updateSupplierById")
     int updateSupplierById(Supplier supplier);
 
     /**
@@ -53,12 +51,12 @@ public interface SupplierMapper {
      * @param name
      * @return
      */
-    Supplier findSupplierByName(String name);
+//    Supplier findSupplierByName(String name);
 
     /**
      * 通过名誉查询供应商列表
      * @param reputation
      * @return
      */
-    List<Supplier> findSupplierListByReputation(String reputation);
+//    List<Supplier> findSupplierListByReputation(String reputation);
 }

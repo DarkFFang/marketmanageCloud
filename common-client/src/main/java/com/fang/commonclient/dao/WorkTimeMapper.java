@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.WorkTime;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/workTime")
+@FeignClient(value = "data-client",contextId = "WorkTime")
 public interface WorkTimeMapper {
 
     /**
@@ -22,7 +20,7 @@ public interface WorkTimeMapper {
      * @param worktime
      * @return
      */
-    @PostMapping("/addNewWorkTime")
+    @PostMapping("/workTime/addNewWorkTime")
     int addNewWorkTime(WorkTime worktime);
 
     /**
@@ -30,7 +28,7 @@ public interface WorkTimeMapper {
      * @param id
      * @return
      */
-    @DeleteMapping("/deleteWorkTimeById")
+    @DeleteMapping("/workTime/deleteWorkTimeById")
     int deleteWorkTimeById(Integer id);
 
     /**
@@ -38,14 +36,14 @@ public interface WorkTimeMapper {
      * @param worktime
      * @return
      */
-    @PutMapping("/updateWorkTimeById")
+    @PutMapping("/workTime/updateWorkTimeById")
     int updateWorkTimeById(WorkTime worktime);
 
     /**
      * 时间表列表
      * @return
      */
-    @GetMapping("/findWorkTimeList")
+    @GetMapping("/workTime/findWorkTimeList")
     List<WorkTime> findWorkTimeList();
 
     /**
@@ -53,17 +51,17 @@ public interface WorkTimeMapper {
      * @param username
      * @return
      */
-    List<WorkTime> searchWorkTimeByUsername(String username);
+//    List<WorkTime> searchWorkTimeByUsername(String username);
 
     /**
      * 查询营业员时间表列表
      * @return
      */
-    List<WorkTime> findClerkTime();
+//    List<WorkTime> findClerkTime();
 
     /**
      * 查询库管员时间表列表
      * @return
      */
-    List<WorkTime> findKeeperTime();
+//    List<WorkTime> findKeeperTime();
 }

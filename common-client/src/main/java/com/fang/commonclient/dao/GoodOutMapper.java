@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.GoodOut;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +13,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/goodOut")
+@FeignClient(value = "data-client",contextId = "GoodOut")
 public interface GoodOutMapper {
 
     /**
@@ -23,14 +21,14 @@ public interface GoodOutMapper {
      * @param goodout
      * @return
      */
-    @PostMapping("/addNewGoodOut")
+    @PostMapping("/goodOut/addNewGoodOut")
     int addNewGoodOut(GoodOut goodout);
 
     /**
      * 出库单列表
      * @return
      */
-    @GetMapping("/findGoodOutList")
+    @GetMapping("/goodOut/findGoodOutList")
     List<GoodOut> findGoodOutList();
 
     /**
@@ -38,7 +36,7 @@ public interface GoodOutMapper {
      * @param id
      * @return
      */
-    @DeleteMapping("/deleteGoodOutById")
+    @DeleteMapping("/goodOut/deleteGoodOutById")
     int deleteGoodOutById(Integer id);
 
     /**
@@ -46,7 +44,7 @@ public interface GoodOutMapper {
      * @param goodOut
      * @return
      */
-    @PutMapping("/updateGoodOutById")
+    @PutMapping("/goodOut/updateGoodOutById")
     int updateGoodOutById(GoodOut goodOut);
 
     /**
@@ -54,7 +52,7 @@ public interface GoodOutMapper {
      * @param id
      * @return
      */
-    @GetMapping("/findGoodOutById")
+    @GetMapping("/goodOut/findGoodOutById")
     GoodOut findGoodOutById(Integer id);
 
     /**
@@ -62,25 +60,25 @@ public interface GoodOutMapper {
      * @param name
      * @return
      */
-    List<GoodOut> findGoodOutListByName(String name);
+//    List<GoodOut> findGoodOutListByName(String name);
 
     /**
      * 通过时间查询出库单列表
      * @param date
      * @return
      */
-    List<GoodOut> findGoodOutListByDate(Date date);
+//    List<GoodOut> findGoodOutListByDate(Date date);
 
     /**
      * 通过营业员员姓名查询出库单列表
      * @param name
      * @return
      */
-    List<GoodOut> findGoodOutListByKeeperName(String name);
+//    List<GoodOut> findGoodOutListByKeeperName(String name);
 
     /**
      * 更新主键自增ID
      */
-    @PutMapping("/alterGoodOutAutoIncrement")
+    @PutMapping("/goodOut/alterGoodOutAutoIncrement")
     void alterGoodOutAutoIncrement();
 }

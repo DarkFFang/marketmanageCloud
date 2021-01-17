@@ -11,7 +11,7 @@ spring:
     date-format: yyyy-MM-dd
     time-zone: GMT+8
   redis:
-    host: localhost
+    host: 119.29.40.206
     port: 6379
     password: 555913
     timeout: 30000
@@ -23,3 +23,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka/
+
+logging:
+  level:
+    com.fang.commonclient: debug

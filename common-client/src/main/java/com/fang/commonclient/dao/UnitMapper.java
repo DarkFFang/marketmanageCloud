@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Unit;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +15,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/unit")
+@FeignClient(value = "data-client",contextId = "Unit")
 public interface UnitMapper {
 
     /**
@@ -25,19 +23,19 @@ public interface UnitMapper {
      * @param unit
      * @return
      */
-    @PostMapping("/addNewUnit")
+    @PostMapping("/unit/addNewUnit")
     int addNewUnit(Unit unit);
 
     /**
      * 商品单位列表
      * @return
      */
-    @GetMapping("/findUnitList")
+    @GetMapping("/unit/findUnitList")
     List<Unit> findUnitList();
 
     /**
      * 更新主键自增ID
      */
-    @PutMapping
+    @PutMapping("/unit/alterAutoIncrement")
     void alterAutoIncrement();
 }

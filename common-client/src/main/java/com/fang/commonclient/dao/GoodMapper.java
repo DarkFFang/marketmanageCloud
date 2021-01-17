@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Good;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/good")
+@FeignClient(value = "data-client",contextId = "Good")
 public interface GoodMapper {
 
     /**
@@ -22,14 +20,14 @@ public interface GoodMapper {
      * @param good
      * @return
      */
-    @PostMapping("/addNewGood")
+    @PostMapping("/good/addNewGood")
     int addNewGood(Good good);
 
     /**
      * 商品列表
      * @return
      */
-    @GetMapping("/findGoodList")
+    @GetMapping("/good/findGoodList")
     List<Good> findGoodList();
 
     /**
@@ -37,7 +35,7 @@ public interface GoodMapper {
      * @param id
      * @return
      */
-    @DeleteMapping("/deleteGoodById")
+    @DeleteMapping("/good/deleteGoodById")
     int deleteGoodById(Integer id);
 
     /**
@@ -45,14 +43,14 @@ public interface GoodMapper {
      * @param good
      * @return
      */
-    @PutMapping("/updateGoodById")
+    @PutMapping("/good/updateGoodById")
     int updateGoodById(Good good);
 
     /**
      * 查找最大的商品编号
      * @return
      */
-    @GetMapping("/findMaxId")
+    @GetMapping("/good/findMaxId")
     Integer findMaxId();
 
     /**
@@ -60,19 +58,19 @@ public interface GoodMapper {
      * @param name
      * @return
      */
-    Good findGoodByName(String name);
+//    Good findGoodByName(String name);
 
     /**
      * 通过商品类型查询商品列表
      * @param name
      * @return
      */
-    List<Good> findGoodListByType(String name);
+//    List<Good> findGoodListByType(String name);
 
     /**
      * 更新主键自增ID
      */
-    @PutMapping("/alterGoodAutoIncrement")
+    @PutMapping("/good/alterGoodAutoIncrement")
     void alterGoodAutoIncrement();
 
 }

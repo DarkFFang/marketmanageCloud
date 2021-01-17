@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Role;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,8 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/role")
+@FeignClient(value = "data-client",contextId = "Role")
 public interface RoleMapper {
 
     /**
@@ -22,14 +20,14 @@ public interface RoleMapper {
      * @param id
      * @return
      */
-    @GetMapping("/findRolesByUserId")
-    List<Role> findRolesByUserId(Integer id);
+    @GetMapping("/role/findRolesByUserId")
+    List<Role> findRolesByUserId(@RequestParam Integer id);
 
     /**
      * 查询所有权限列表
      * @return
      */
-    @GetMapping("/findAllRole")
+    @GetMapping("/role/findAllRole")
     List<Role> findAllRole();
 
     /**
@@ -37,7 +35,7 @@ public interface RoleMapper {
      * @param role
      * @return
      */
-    @PostMapping("/addNewRole")
+    @PostMapping("/role/addNewRole")
     int addNewRole(Role role);
 
     /**
@@ -45,7 +43,7 @@ public interface RoleMapper {
      * @param role
      * @return
      */
-    @PutMapping("/updateRoleById")
+    @PutMapping("/role/updateRoleById")
     int updateRoleById(Role role);
 
     /**
@@ -53,7 +51,7 @@ public interface RoleMapper {
      * @param id
      * @return
      */
-    @DeleteMapping("/deleteRoleById")
+    @DeleteMapping("/role/deleteRoleById")
     int deleteRoleById(Integer id);
 
     /**
@@ -62,15 +60,15 @@ public interface RoleMapper {
      * @param roleid
      * @return
      */
-    @PostMapping("/addNewUserRole")
-    int addNewUserRole(Integer userid, Integer roleid);
+    @PostMapping("/role/addNewUserRole")
+    int addNewUserRole(@RequestParam Integer userid,@RequestParam Integer roleid);
 
     /**
      * 删除角色权限
      * @param userid
      * @return
      */
-    @DeleteMapping("/deleteUserRoleByUserId")
+    @DeleteMapping("/role/deleteUserRoleByUserId")
     int deleteUserRoleByUserId(Integer userid);
 
 }

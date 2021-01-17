@@ -1,7 +1,6 @@
 package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.Refund;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +13,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient("data-client")
-@RequestMapping("/refund")
+@FeignClient(value = "data-client",contextId = "Refund")
 public interface RefundMapper {
 
     /**
@@ -23,14 +21,14 @@ public interface RefundMapper {
      * @param refund
      * @return
      */
-    @PostMapping("/addNewRefund")
+    @PostMapping("/refund/addNewRefund")
     int addNewRefund(Refund refund);
 
     /**
      * 退货列表
      * @return
      */
-    @GetMapping("/findRefundList")
+    @GetMapping("/refund/findRefundList")
     List<Refund> findRefundList();
 
     /**
@@ -38,7 +36,7 @@ public interface RefundMapper {
      * @param id
      * @return
      */
-    @DeleteMapping("/deleteRefundById")
+    @DeleteMapping("/refund/deleteRefundById")
     int deleteRefundById(Integer id);
 
     /**
@@ -46,7 +44,7 @@ public interface RefundMapper {
      * @param refund
      * @return
      */
-    @PutMapping("/updateRefundById")
+    @PutMapping("/refund/updateRefundById")
     int updateRefundById(Refund refund);
 
     /**
@@ -54,12 +52,12 @@ public interface RefundMapper {
      * @param name
      * @return
      */
-    List<Refund> findRefundListByName(String name);
+//    List<Refund> findRefundListByName(String name);
 
     /**
      * 通过退货时间查询退货列表
      * @param date
      * @return
      */
-    List<Refund> findRefundListByDate(Date date);
+//    List<Refund> findRefundListByDate(Date date);
 }
