@@ -16,6 +16,7 @@ import java.util.List;
  * @date 2020/12/14
  */
 @RestController
+@RequestMapping("/supplier")
 public class SupplierController {
     /**
      * 供应商映射器

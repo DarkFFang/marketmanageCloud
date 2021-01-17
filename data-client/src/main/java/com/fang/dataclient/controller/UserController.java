@@ -27,6 +27,7 @@ import java.util.List;
  * @date 2020/12/14
  */
 @RestController
+@RequestMapping("/user")
 public class UserController {
     /**
      * 用户映射器

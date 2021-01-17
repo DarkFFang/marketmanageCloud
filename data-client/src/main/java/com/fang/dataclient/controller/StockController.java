@@ -5,10 +5,7 @@ import com.fang.dataclient.dao.StockMapper;
 import com.fang.dataclient.entity.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +16,7 @@ import java.util.List;
  * @date 2020/12/14
  */
 @RestController
+@RequestMapping("/stock")
 public class StockController {
     /**
      * 库存映射器

@@ -18,6 +18,7 @@ import java.util.List;
  * @date 2020/12/14
  */
 @RestController
+@RequestMapping("/refund")
 public class RefundController {
     /**
      * 退货映射器

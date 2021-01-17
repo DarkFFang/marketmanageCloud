@@ -19,6 +19,7 @@ import java.util.List;
  * @date 2020/12/14
  */
 @RestController
+@RequestMapping("/role")
 public class RoleController {
     /**
      * 角色映射器

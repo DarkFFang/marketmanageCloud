@@ -16,6 +16,7 @@ import java.util.List;
  * @date 2020/12/14
  */
 @RestController
+@RequestMapping("/workTime")
 public class WorkTimeController {
     /**
      * 工作时间映射器

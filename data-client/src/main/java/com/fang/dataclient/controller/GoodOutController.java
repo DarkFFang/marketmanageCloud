@@ -19,6 +19,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
+@RequestMapping("/goodOut")
 public class GoodOutController {
     /**
      * 实例GoodOutMapper
