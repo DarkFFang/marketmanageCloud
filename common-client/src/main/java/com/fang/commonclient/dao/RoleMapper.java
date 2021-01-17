@@ -12,7 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "Role")
+@FeignClient(value = "data-client",contextId = "RoleMapper")
 public interface RoleMapper {
 
     /**
@@ -36,7 +36,7 @@ public interface RoleMapper {
      * @return
      */
     @PostMapping("/role/addNewRole")
-    int addNewRole(Role role);
+    int addNewRole(@RequestBody Role role);
 
     /**
      * 修改角色权限
@@ -44,7 +44,7 @@ public interface RoleMapper {
      * @return
      */
     @PutMapping("/role/updateRoleById")
-    int updateRoleById(Role role);
+    int updateRoleById(@RequestBody Role role);
 
     /**
      * 删除角色
@@ -52,7 +52,7 @@ public interface RoleMapper {
      * @return
      */
     @DeleteMapping("/role/deleteRoleById")
-    int deleteRoleById(Integer id);
+    int deleteRoleById(@RequestParam Integer id);
 
     /**
      * 添加角色权限
@@ -69,6 +69,6 @@ public interface RoleMapper {
      * @return
      */
     @DeleteMapping("/role/deleteUserRoleByUserId")
-    int deleteUserRoleByUserId(Integer userid);
+    int deleteUserRoleByUserId(@RequestParam Integer userid);
 
 }

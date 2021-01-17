@@ -12,7 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "WorkTime")
+@FeignClient(value = "data-client",contextId = "WorkTimeMapper")
 public interface WorkTimeMapper {
 
     /**
@@ -21,7 +21,7 @@ public interface WorkTimeMapper {
      * @return
      */
     @PostMapping("/workTime/addNewWorkTime")
-    int addNewWorkTime(WorkTime worktime);
+    int addNewWorkTime(@RequestBody WorkTime worktime);
 
     /**
      * 删除时间表项
@@ -29,7 +29,7 @@ public interface WorkTimeMapper {
      * @return
      */
     @DeleteMapping("/workTime/deleteWorkTimeById")
-    int deleteWorkTimeById(Integer id);
+    int deleteWorkTimeById(@RequestParam Integer id);
 
     /**
      * 修改时间表项
@@ -37,7 +37,7 @@ public interface WorkTimeMapper {
      * @return
      */
     @PutMapping("/workTime/updateWorkTimeById")
-    int updateWorkTimeById(WorkTime worktime);
+    int updateWorkTimeById(@RequestBody WorkTime worktime);
 
     /**
      * 时间表列表
