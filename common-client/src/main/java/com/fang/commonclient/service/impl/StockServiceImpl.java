@@ -1,8 +1,8 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.StockMapper;
-import com.fang.marketmanage.entity.Stock;
-import com.fang.marketmanage.service.StockService;
+import com.fang.commonclient.dao.StockMapper;
+import com.fang.commonclient.entity.Stock;
+import com.fang.commonclient.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

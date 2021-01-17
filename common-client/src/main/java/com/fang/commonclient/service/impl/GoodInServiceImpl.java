@@ -1,9 +1,9 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.GoodInMapper;
-import com.fang.marketmanage.dao.StockMapper;
-import com.fang.marketmanage.entity.GoodIn;
-import com.fang.marketmanage.service.GoodInService;
+import com.fang.commonclient.dao.GoodInMapper;
+import com.fang.commonclient.dao.StockMapper;
+import com.fang.commonclient.entity.GoodIn;
+import com.fang.commonclient.service.GoodInService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

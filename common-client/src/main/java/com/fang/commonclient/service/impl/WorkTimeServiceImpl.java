@@ -1,8 +1,8 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.WorkTimeMapper;
-import com.fang.marketmanage.entity.WorkTime;
-import com.fang.marketmanage.service.WorkTimeService;
+import com.fang.commonclient.dao.WorkTimeMapper;
+import com.fang.commonclient.entity.WorkTime;
+import com.fang.commonclient.service.WorkTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

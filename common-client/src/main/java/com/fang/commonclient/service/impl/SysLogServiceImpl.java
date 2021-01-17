@@ -1,8 +1,8 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.SysLogMapper;
-import com.fang.marketmanage.entity.SysLog;
-import com.fang.marketmanage.service.SysLogService;
+import com.fang.commonclient.dao.SysLogMapper;
+import com.fang.commonclient.entity.SysLog;
+import com.fang.commonclient.service.SysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

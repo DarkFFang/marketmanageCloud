@@ -1,9 +1,9 @@
 package com.fang.commonclient.controller;
 
-import com.fang.marketmanage.annotation.CustomLog;
-import com.fang.marketmanage.entity.GoodType;
-import com.fang.marketmanage.service.GoodTypeService;
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.annotation.CustomLog;
+import com.fang.commonclient.entity.GoodType;
+import com.fang.commonclient.service.GoodTypeService;
+import com.fang.commonclient.util.RespUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

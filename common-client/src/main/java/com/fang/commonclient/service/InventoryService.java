@@ -1,7 +1,7 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.Inventory;
-import com.fang.marketmanage.entity.InventoryRecord;
+import com.fang.commonclient.entity.Inventory;
+import com.fang.commonclient.entity.InventoryRecord;
 
 import java.util.Date;
 import java.util.List;

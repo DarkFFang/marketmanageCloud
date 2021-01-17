@@ -1,6 +1,6 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.WorkTime;
+import com.fang.commonclient.entity.WorkTime;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.PermissionMapper;
-import com.fang.marketmanage.dao.RoleMapper;
-import com.fang.marketmanage.entity.Permission;
-import com.fang.marketmanage.entity.Role;
-import com.fang.marketmanage.entity.vo.PermissionVo;
-import com.fang.marketmanage.service.RoleService;
+import com.fang.commonclient.dao.PermissionMapper;
+import com.fang.commonclient.dao.RoleMapper;
+import com.fang.commonclient.entity.Permission;
+import com.fang.commonclient.entity.Role;
+import com.fang.commonclient.entity.vo.PermissionVo;
+import com.fang.commonclient.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

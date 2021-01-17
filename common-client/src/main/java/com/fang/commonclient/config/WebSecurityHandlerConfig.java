@@ -1,10 +1,10 @@
 package com.fang.commonclient.config;
 
-import com.fang.marketmanage.entity.JwtUser;
-import com.fang.marketmanage.entity.SysLog;
-import com.fang.marketmanage.service.SysLogService;
-import com.fang.marketmanage.util.JwtTokenUtil;
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.entity.JwtUser;
+import com.fang.commonclient.entity.SysLog;
+import com.fang.commonclient.service.SysLogService;
+import com.fang.commonclient.util.JwtTokenUtil;
+import com.fang.commonclient.util.RespUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

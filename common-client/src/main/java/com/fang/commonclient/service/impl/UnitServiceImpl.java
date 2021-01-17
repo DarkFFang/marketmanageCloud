@@ -1,8 +1,8 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.UnitMapper;
-import com.fang.marketmanage.entity.Unit;
-import com.fang.marketmanage.service.UnitService;
+import com.fang.commonclient.dao.UnitMapper;
+import com.fang.commonclient.entity.Unit;
+import com.fang.commonclient.service.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

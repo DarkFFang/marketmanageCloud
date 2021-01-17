@@ -1,14 +1,14 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.config.CustomGrantedAuthority;
-import com.fang.marketmanage.dao.PermissionMapper;
-import com.fang.marketmanage.dao.RoleMapper;
-import com.fang.marketmanage.dao.UserMapper;
-import com.fang.marketmanage.entity.JwtUser;
-import com.fang.marketmanage.entity.Permission;
-import com.fang.marketmanage.entity.User;
-import com.fang.marketmanage.entity.vo.UserVo;
-import com.fang.marketmanage.service.UserService;
+import com.fang.commonclient.config.CustomGrantedAuthority;
+import com.fang.commonclient.dao.PermissionMapper;
+import com.fang.commonclient.dao.RoleMapper;
+import com.fang.commonclient.dao.UserMapper;
+import com.fang.commonclient.entity.JwtUser;
+import com.fang.commonclient.entity.Permission;
+import com.fang.commonclient.entity.User;
+import com.fang.commonclient.entity.vo.UserVo;
+import com.fang.commonclient.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

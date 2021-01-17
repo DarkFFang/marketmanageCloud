@@ -1,7 +1,7 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.User;
-import com.fang.marketmanage.entity.vo.UserVo;
+import com.fang.commonclient.entity.User;
+import com.fang.commonclient.entity.vo.UserVo;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;

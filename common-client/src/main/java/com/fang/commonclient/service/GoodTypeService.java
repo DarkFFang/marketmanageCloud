@@ -1,6 +1,6 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.GoodType;
+import com.fang.commonclient.entity.GoodType;
 
 import java.util.List;
 

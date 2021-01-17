@@ -1,7 +1,7 @@
 package com.fang.commonclient.dao;
 
-import com.fang.marketmanage.entity.Permission;
-import com.fang.marketmanage.entity.vo.PermissionVo;
+import com.fang.commonclient.entity.Permission;
+import com.fang.commonclient.entity.vo.PermissionVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

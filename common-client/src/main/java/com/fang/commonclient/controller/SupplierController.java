@@ -1,10 +1,11 @@
 package com.fang.commonclient.controller;
-import com.fang.marketmanage.annotation.CustomLog;
-import com.fang.marketmanage.entity.Supplier;
-import com.fang.marketmanage.service.SupplierService;
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.annotation.CustomLog;
+import com.fang.commonclient.entity.Supplier;
+import com.fang.commonclient.service.SupplierService;
+import com.fang.commonclient.util.RespUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.fang.commonclient.dao;
 
-import com.fang.marketmanage.entity.Supplier;
+import com.fang.commonclient.entity.Supplier;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

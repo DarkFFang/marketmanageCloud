@@ -1,6 +1,6 @@
 package com.fang.commonclient.dao;
 
-import com.fang.marketmanage.entity.GoodOut;
+import com.fang.commonclient.entity.GoodOut;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Date;

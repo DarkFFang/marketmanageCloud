@@ -1,6 +1,6 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.Unit;
+import com.fang.commonclient.entity.Unit;
 
 import java.util.List;
 

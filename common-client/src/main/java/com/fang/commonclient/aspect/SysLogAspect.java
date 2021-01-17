@@ -1,9 +1,9 @@
 package com.fang.commonclient.aspect;
 
-import com.fang.marketmanage.annotation.CustomLog;
-import com.fang.marketmanage.entity.JwtUser;
-import com.fang.marketmanage.entity.SysLog;
-import com.fang.marketmanage.service.SysLogService;
+import com.fang.commonclient.annotation.CustomLog;
+import com.fang.commonclient.entity.JwtUser;
+import com.fang.commonclient.entity.SysLog;
+import com.fang.commonclient.service.SysLogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -44,7 +44,7 @@ public class SysLogAspect {
     /**
      * 日志点切
      */
-    @Pointcut("@annotation(com.fang.marketmanage.annotation.CustomLog)")
+    @Pointcut("@annotation(com.fang.commonclient.annotation.CustomLog)")
     public void logPointCut() {
     }
 

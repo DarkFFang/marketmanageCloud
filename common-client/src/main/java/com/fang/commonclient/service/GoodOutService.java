@@ -1,6 +1,6 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.GoodOut;
+import com.fang.commonclient.entity.GoodOut;
 
 import java.util.Date;
 import java.util.List;

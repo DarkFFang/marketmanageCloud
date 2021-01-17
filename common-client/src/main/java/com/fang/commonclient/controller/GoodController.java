@@ -1,17 +1,18 @@
 package com.fang.commonclient.controller;
 
 
-import com.fang.marketmanage.annotation.CustomLog;
-import com.fang.marketmanage.entity.Good;
-import com.fang.marketmanage.service.GoodService;
-import com.fang.marketmanage.service.StockService;
-import com.fang.marketmanage.util.RedisUtil;
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.annotation.CustomLog;
+import com.fang.commonclient.entity.Good;
+import com.fang.commonclient.service.GoodService;
+import com.fang.commonclient.service.StockService;
+import com.fang.commonclient.util.RedisUtil;
+import com.fang.commonclient.util.RespUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

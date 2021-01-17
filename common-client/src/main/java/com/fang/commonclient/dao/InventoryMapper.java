@@ -1,7 +1,7 @@
 package com.fang.commonclient.dao;
 
-import com.fang.marketmanage.entity.Inventory;
-import com.fang.marketmanage.entity.InventoryRecord;
+import com.fang.commonclient.entity.Inventory;
+import com.fang.commonclient.entity.InventoryRecord;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Date;

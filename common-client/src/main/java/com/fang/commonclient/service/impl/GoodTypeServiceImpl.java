@@ -1,8 +1,8 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.GoodTypeMapper;
-import com.fang.marketmanage.entity.GoodType;
-import com.fang.marketmanage.service.GoodTypeService;
+import com.fang.commonclient.dao.GoodTypeMapper;
+import com.fang.commonclient.entity.GoodType;
+import com.fang.commonclient.service.GoodTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

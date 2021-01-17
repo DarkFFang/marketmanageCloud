@@ -1,6 +1,6 @@
 package com.fang.commonclient.dao;
 
-import com.fang.marketmanage.entity.WorkTime;
+import com.fang.commonclient.entity.WorkTime;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

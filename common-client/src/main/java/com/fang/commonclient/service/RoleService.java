@@ -1,8 +1,8 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.Permission;
-import com.fang.marketmanage.entity.Role;
-import com.fang.marketmanage.entity.vo.PermissionVo;
+import com.fang.commonclient.entity.Permission;
+import com.fang.commonclient.entity.Role;
+import com.fang.commonclient.entity.vo.PermissionVo;
 
 import java.util.List;
 

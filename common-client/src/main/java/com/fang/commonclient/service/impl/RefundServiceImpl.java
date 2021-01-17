@@ -1,9 +1,9 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.RefundMapper;
-import com.fang.marketmanage.dao.StockMapper;
-import com.fang.marketmanage.entity.Refund;
-import com.fang.marketmanage.service.RefundService;
+import com.fang.commonclient.dao.RefundMapper;
+import com.fang.commonclient.dao.StockMapper;
+import com.fang.commonclient.entity.Refund;
+import com.fang.commonclient.service.RefundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

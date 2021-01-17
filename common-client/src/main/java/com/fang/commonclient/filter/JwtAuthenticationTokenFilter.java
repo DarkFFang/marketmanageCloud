@@ -1,8 +1,8 @@
 package com.fang.commonclient.filter;
 
-import com.fang.marketmanage.service.UserService;
-import com.fang.marketmanage.util.JwtTokenUtil;
-import com.fang.marketmanage.util.RedisUtil;
+import com.fang.commonclient.service.UserService;
+import com.fang.commonclient.util.JwtTokenUtil;
+import com.fang.commonclient.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

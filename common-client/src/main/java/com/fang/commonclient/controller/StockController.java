@@ -1,7 +1,7 @@
 package com.fang.commonclient.controller;
 
-import com.fang.marketmanage.entity.Stock;
-import com.fang.marketmanage.service.StockService;
+import com.fang.commonclient.entity.Stock;
+import com.fang.commonclient.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;

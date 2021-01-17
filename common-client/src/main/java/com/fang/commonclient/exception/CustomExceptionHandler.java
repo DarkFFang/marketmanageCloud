@@ -1,6 +1,6 @@
 package com.fang.commonclient.exception;
 
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.util.RespUtil;
 import io.jsonwebtoken.MalformedJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

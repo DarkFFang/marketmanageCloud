@@ -1,6 +1,6 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.SysLog;
+import com.fang.commonclient.entity.SysLog;
 
 import java.util.List;
 

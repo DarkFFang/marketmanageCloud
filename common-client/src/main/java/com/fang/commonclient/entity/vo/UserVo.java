@@ -1,6 +1,6 @@
 package com.fang.commonclient.entity.vo;
 
-import com.fang.marketmanage.entity.Role;
+import com.fang.commonclient.entity.Role;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

@@ -1,14 +1,14 @@
 package com.fang.commonclient.controller;
 
-import com.fang.marketmanage.annotation.CustomLog;
-import com.fang.marketmanage.entity.JwtUser;
-import com.fang.marketmanage.entity.Role;
-import com.fang.marketmanage.entity.User;
-import com.fang.marketmanage.entity.vo.PermissionVo;
-import com.fang.marketmanage.entity.vo.UserVo;
-import com.fang.marketmanage.service.RoleService;
-import com.fang.marketmanage.service.UserService;
-import com.fang.marketmanage.util.RespUtil;
+import com.fang.commonclient.annotation.CustomLog;
+import com.fang.commonclient.entity.JwtUser;
+import com.fang.commonclient.entity.Role;
+import com.fang.commonclient.entity.User;
+import com.fang.commonclient.entity.vo.PermissionVo;
+import com.fang.commonclient.entity.vo.UserVo;
+import com.fang.commonclient.service.RoleService;
+import com.fang.commonclient.service.UserService;
+import com.fang.commonclient.util.RespUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

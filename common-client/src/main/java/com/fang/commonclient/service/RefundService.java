@@ -1,6 +1,6 @@
 package com.fang.commonclient.service;
 
-import com.fang.marketmanage.entity.Refund;
+import com.fang.commonclient.entity.Refund;
 
 import java.util.Date;
 import java.util.List;

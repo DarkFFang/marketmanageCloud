@@ -1,10 +1,10 @@
 package com.fang.commonclient.service.impl;
 
-import com.fang.marketmanage.dao.InventoryMapper;
-import com.fang.marketmanage.dao.StockMapper;
-import com.fang.marketmanage.entity.Inventory;
-import com.fang.marketmanage.entity.InventoryRecord;
-import com.fang.marketmanage.service.InventoryService;
+import com.fang.commonclient.dao.InventoryMapper;
+import com.fang.commonclient.dao.StockMapper;
+import com.fang.commonclient.entity.Inventory;
+import com.fang.commonclient.entity.InventoryRecord;
+import com.fang.commonclient.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

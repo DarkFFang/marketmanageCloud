@@ -1,6 +1,6 @@
 package com.fang.commonclient.dao;
 
-import com.fang.marketmanage.entity.Refund;
+import com.fang.commonclient.entity.Refund;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Date;
