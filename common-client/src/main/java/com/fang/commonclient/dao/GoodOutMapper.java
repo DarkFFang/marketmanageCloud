@@ -2,6 +2,8 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.GoodOut;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -12,7 +14,8 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/goodOut")
 public interface GoodOutMapper {
 
     /**
@@ -20,12 +23,14 @@ public interface GoodOutMapper {
      * @param goodout
      * @return
      */
+    @PostMapping("/addNewGoodOut")
     int addNewGoodOut(GoodOut goodout);
 
     /**
      * 出库单列表
      * @return
      */
+    @GetMapping("/findGoodOutList")
     List<GoodOut> findGoodOutList();
 
     /**
@@ -33,6 +38,7 @@ public interface GoodOutMapper {
      * @param id
      * @return
      */
+    @DeleteMapping("/deleteGoodOutById")
     int deleteGoodOutById(Integer id);
 
     /**
@@ -40,6 +46,7 @@ public interface GoodOutMapper {
      * @param goodOut
      * @return
      */
+    @PutMapping("/updateGoodOutById")
     int updateGoodOutById(GoodOut goodOut);
 
     /**
@@ -47,6 +54,7 @@ public interface GoodOutMapper {
      * @param id
      * @return
      */
+    @GetMapping("/findGoodOutById")
     GoodOut findGoodOutById(Integer id);
 
     /**

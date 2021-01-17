@@ -3,6 +3,11 @@ package com.fang.commonclient.dao;
 import com.fang.commonclient.entity.Inventory;
 import com.fang.commonclient.entity.InventoryRecord;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -13,7 +18,8 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@Mapper
+@FeignClient("data-client")
+@RequestMapping("/Inventory")
 public interface InventoryMapper {
 
     /**
@@ -21,6 +27,7 @@ public interface InventoryMapper {
      * @param inventory
      * @return
      */
+    @PostMapping("/addNewInventory")
     int addNewInventory(Inventory inventory);
 
     /**
@@ -34,6 +41,7 @@ public interface InventoryMapper {
      * 删除所有盘存表
      * @return
      */
+    @DeleteMapping("/deleteInventoryByDate")
     int deleteInventoryByDate(Date date);
 
     /**
@@ -54,6 +62,7 @@ public interface InventoryMapper {
      * @param date
      * @return
      */
+    @GetMapping("/findInventoryListByDate")
     List<Inventory> findInventoryListByDate(Date date);
 
     /**
@@ -61,12 +70,14 @@ public interface InventoryMapper {
      * @param inventoryRecord
      * @return
      */
+    @PostMapping("/addNewInventoryRecord")
     int addNewInventoryRecord(InventoryRecord inventoryRecord);
 
     /**
      * 盘存目录列表
      * @return
      */
+    @GetMapping("/findInventoryRecordList")
     List<InventoryRecord> findInventoryRecordList();
 
     /**
@@ -74,8 +85,10 @@ public interface InventoryMapper {
      * @param id
      * @return
      */
+    @GetMapping("/findInventoryRecordById")
     InventoryRecord findInventoryRecordById(Integer id);
 
+    @DeleteMapping("/deleteInventoryRecordById")
     int deleteInventoryRecordById(Integer id);
 
 }
