@@ -13,7 +13,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "Refund")
+@FeignClient(value = "data-client",contextId = "RefundMapper")
 public interface RefundMapper {
 
     /**
@@ -22,7 +22,7 @@ public interface RefundMapper {
      * @return
      */
     @PostMapping("/refund/addNewRefund")
-    int addNewRefund(Refund refund);
+    int addNewRefund(@RequestBody Refund refund);
 
     /**
      * 退货列表
@@ -37,7 +37,7 @@ public interface RefundMapper {
      * @return
      */
     @DeleteMapping("/refund/deleteRefundById")
-    int deleteRefundById(Integer id);
+    int deleteRefundById(@RequestParam Integer id);
 
     /**
      * 修改退货表项
@@ -45,7 +45,7 @@ public interface RefundMapper {
      * @return
      */
     @PutMapping("/refund/updateRefundById")
-    int updateRefundById(Refund refund);
+    int updateRefundById(@RequestBody Refund refund);
 
     /**
      * 通过商品名称查询退货列表

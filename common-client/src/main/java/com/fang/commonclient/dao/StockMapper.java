@@ -12,7 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "Stock")
+@FeignClient(value = "data-client",contextId = "StockMapper")
 public interface StockMapper {
 
     /**
@@ -28,7 +28,7 @@ public interface StockMapper {
      * @return
      */
     @PostMapping("/stock/addNewStock")
-    int addNewStock(Stock stock);
+    int addNewStock(@RequestBody Stock stock);
 
     /**
      * 删除库存
@@ -36,7 +36,7 @@ public interface StockMapper {
      * @return
      */
     @DeleteMapping("/stock/deleteStockById")
-    int deleteStockById(Integer id);
+    int deleteStockById(@RequestParam Integer id);
 
     /**
      * 修改库存增加数量

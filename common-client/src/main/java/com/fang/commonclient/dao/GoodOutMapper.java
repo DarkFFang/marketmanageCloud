@@ -13,7 +13,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "GoodOut")
+@FeignClient(value = "data-client",contextId = "GoodOutMapper")
 public interface GoodOutMapper {
 
     /**
@@ -22,7 +22,7 @@ public interface GoodOutMapper {
      * @return
      */
     @PostMapping("/goodOut/addNewGoodOut")
-    int addNewGoodOut(GoodOut goodout);
+    int addNewGoodOut(@RequestBody GoodOut goodout);
 
     /**
      * 出库单列表
@@ -37,7 +37,7 @@ public interface GoodOutMapper {
      * @return
      */
     @DeleteMapping("/goodOut/deleteGoodOutById")
-    int deleteGoodOutById(Integer id);
+    int deleteGoodOutById(@RequestParam Integer id);
 
     /**
      * 修改出库单信息
@@ -45,7 +45,7 @@ public interface GoodOutMapper {
      * @return
      */
     @PutMapping("/goodOut/updateGoodOutById")
-    int updateGoodOutById(GoodOut goodOut);
+    int updateGoodOutById(@RequestBody GoodOut goodOut);
 
     /**
      * 通过编号查找出库表
@@ -53,7 +53,7 @@ public interface GoodOutMapper {
      * @return
      */
     @GetMapping("/goodOut/findGoodOutById")
-    GoodOut findGoodOutById(Integer id);
+    GoodOut findGoodOutById(@RequestParam Integer id);
 
     /**
      * 通过商品名称查询出库单列表

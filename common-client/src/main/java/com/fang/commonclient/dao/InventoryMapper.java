@@ -3,10 +3,7 @@ package com.fang.commonclient.dao;
 import com.fang.commonclient.entity.Inventory;
 import com.fang.commonclient.entity.InventoryRecord;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +14,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "Inventory")
+@FeignClient(value = "data-client",contextId = "InventoryMapper")
 public interface InventoryMapper {
 
     /**
@@ -26,7 +23,7 @@ public interface InventoryMapper {
      * @return
      */
     @PostMapping("/inventory/addNewInventory")
-    int addNewInventory(Inventory inventory);
+    int addNewInventory(@RequestBody Inventory inventory);
 
     /**
      * 删除盘存表
@@ -40,7 +37,7 @@ public interface InventoryMapper {
      * @return
      */
     @DeleteMapping("/inventory/deleteInventoryByDate")
-    int deleteInventoryByDate(Date date);
+    int deleteInventoryByDate(@RequestBody Date date);
 
     /**
      * 盘存列表
@@ -61,7 +58,7 @@ public interface InventoryMapper {
      * @return
      */
     @GetMapping("/inventory/findInventoryListByDate")
-    List<Inventory> findInventoryListByDate(Date date);
+    List<Inventory> findInventoryListByDate(@RequestBody Date date);
 
     /**
      * 增加盘存目录
@@ -69,7 +66,7 @@ public interface InventoryMapper {
      * @return
      */
     @PostMapping("/inventory/addNewInventoryRecord")
-    int addNewInventoryRecord(InventoryRecord inventoryRecord);
+    int addNewInventoryRecord(@RequestBody InventoryRecord inventoryRecord);
 
     /**
      * 盘存目录列表
@@ -84,9 +81,9 @@ public interface InventoryMapper {
      * @return
      */
     @GetMapping("/inventory/findInventoryRecordById")
-    InventoryRecord findInventoryRecordById(Integer id);
+    InventoryRecord findInventoryRecordById(@RequestParam Integer id);
 
     @DeleteMapping("/inventory/deleteInventoryRecordById")
-    int deleteInventoryRecordById(Integer id);
+    int deleteInventoryRecordById(@RequestParam Integer id);
 
 }

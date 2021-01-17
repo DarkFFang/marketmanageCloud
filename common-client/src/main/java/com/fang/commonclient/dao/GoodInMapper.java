@@ -13,7 +13,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId ="GoodIn" )
+@FeignClient(value = "data-client",contextId ="GoodInMapper" )
 public interface GoodInMapper {
     /**
      * 添加入库单
@@ -44,7 +44,7 @@ public interface GoodInMapper {
      * @return
      */
     @PutMapping("/goodIn/updateGoodInById")
-    int updateGoodInById(GoodIn goodIn);
+    int updateGoodInById(@RequestBody GoodIn goodIn);
 
     /**
      * 通过编号查询入库表
@@ -52,7 +52,7 @@ public interface GoodInMapper {
      * @return
      */
     @GetMapping("/goodIn/findGoodInById")
-    GoodIn findGoodInById(Integer id);
+    GoodIn findGoodInById(@RequestParam Integer id);
 
     /**
      * 通过商品名称查询入库单列表

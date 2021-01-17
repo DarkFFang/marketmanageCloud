@@ -12,7 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "Good")
+@FeignClient(value = "data-client",contextId = "GoodMapper")
 public interface GoodMapper {
 
     /**
@@ -21,7 +21,7 @@ public interface GoodMapper {
      * @return
      */
     @PostMapping("/good/addNewGood")
-    int addNewGood(Good good);
+    int addNewGood(@RequestBody Good good);
 
     /**
      * 商品列表
@@ -36,7 +36,7 @@ public interface GoodMapper {
      * @return
      */
     @DeleteMapping("/good/deleteGoodById")
-    int deleteGoodById(Integer id);
+    int deleteGoodById(@RequestParam Integer id);
 
     /**
      * 修改商品
@@ -44,7 +44,7 @@ public interface GoodMapper {
      * @return
      */
     @PutMapping("/good/updateGoodById")
-    int updateGoodById(Good good);
+    int updateGoodById(@RequestBody Good good);
 
     /**
      * 查找最大的商品编号
