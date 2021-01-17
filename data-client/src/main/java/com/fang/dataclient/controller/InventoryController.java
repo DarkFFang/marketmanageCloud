@@ -28,7 +28,7 @@ public class InventoryController {
     private InventoryMapper inventoryMapper;
 
     @PostMapping("/addNewInventory")
-    int addNewInventory(Inventory inventory) {
+    public int addNewInventory(Inventory inventory) {
         return inventoryMapper.addNewInventory(inventory);
     }
 

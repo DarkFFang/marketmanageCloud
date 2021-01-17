@@ -80,7 +80,7 @@ public class GoodOutController {
     }
 
     @GetMapping("/findGoodOutById")
-    GoodOut findGoodOutById(Integer id) {
+    public GoodOut findGoodOutById(Integer id) {
         return goodOutMapper.findGoodOutById(id);
     }
 

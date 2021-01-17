@@ -75,7 +75,7 @@ public class GoodInController {
     }
 
     @GetMapping("/findGoodInById")
-    GoodIn findGoodInById(Integer id) {
+    public GoodIn findGoodInById(Integer id) {
         return goodInMapper.findGoodInById(id);
     }
 
