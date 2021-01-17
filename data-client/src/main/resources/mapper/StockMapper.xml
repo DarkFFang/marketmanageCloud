@@ -15,7 +15,7 @@
         SELECT * FROM stock
     </select>
     <insert id="addNewStock" parameterType="com.fang.dataclient.entity.Stock">
-        INSERT INTO stock(goodid,date,typeId,quantity,unitId,price) VALUES (#{goodId},#{date},#{typeid},0,#{unitId},0)
+        INSERT INTO stock(goodid,date,typeid,quantity,unitid,price) VALUES (#{goodId},#{date},#{typeId},0,#{unitId},0)
     </insert>
     <select id="findStockByName" resultMap="stockResultMap">
         SELECT  * FROM stock WHERE goodid=(SELECT goodid FROM good WHERE name=#{name})

@@ -8,7 +8,7 @@
         <result property="name" column="name"/>
     </resultMap>
     <insert id="addNewGoodType" parameterType="com.fang.dataclient.entity.GoodType">
-        INSERT INTO good(name) VALUES (#{name})
+        INSERT INTO goodtype(name) VALUES (#{name})
     </insert>
     <select id="findGoodTypeList" resultMap="goodTypeResultMap">
         SELECT * FROM goodtype
