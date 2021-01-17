@@ -27,9 +27,8 @@ public class UserController {
     private UserMapper userMapper;
 
 
-
     @GetMapping("/findUserByPhone")
-    public User findUserByPhone(String phone){
+    public User findUserByPhone(String phone) {
         return userMapper.findUserByPhone(phone);
     }
 
@@ -40,7 +39,7 @@ public class UserController {
      * @return int
      */
     @PostMapping("/addNewUser")
-    public int addNewUser(User user) {
+    public int addNewUser(@RequestBody User user) {
         return userMapper.addNewUser(user);
     }
 
@@ -84,7 +83,7 @@ public class UserController {
      * @return int
      */
     @PutMapping("/updateUserById")
-    public int updateUserById(User user) {
+    public int updateUserById(@RequestBody User user) {
         return userMapper.updateUserById(user);
     }
 
@@ -151,12 +150,12 @@ public class UserController {
     }
 
     @GetMapping("/findPermissionById")
-    public int findPermissionById(){
+    public int findPermissionById() {
         return userMapper.findPermissionById();
     }
 
     @PutMapping("/alterUserAutoIncrement")
-    public void alterUserAutoIncrement(){
+    public void alterUserAutoIncrement() {
         userMapper.alterUserAutoIncrement();
     }
 

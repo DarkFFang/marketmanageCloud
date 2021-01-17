@@ -21,7 +21,7 @@ public interface GoodInMapper {
      * @return
      */
     @PostMapping("/goodIn/addNewGoodIn")
-    int addNewGoodIn(@RequestParam("goodin") GoodIn goodin);
+    int addNewGoodIn(@RequestBody GoodIn goodin);
 
     /**
      * 入库单列表
@@ -36,7 +36,7 @@ public interface GoodInMapper {
      * @return
      */
     @DeleteMapping("/goodIn/deleteGoodInById")
-    int deleteGoodInById(@RequestParam("id") Integer id);
+    int deleteGoodInById(@RequestParam Integer id);
 
     /**
      * 修改入库单信息

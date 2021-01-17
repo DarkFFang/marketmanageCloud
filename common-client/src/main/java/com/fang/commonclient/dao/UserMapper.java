@@ -22,7 +22,7 @@ public interface UserMapper {
      * @return
      */
     @PostMapping("/user/addNewUser")
-    int addNewUser(@RequestParam User user);
+    int addNewUser(@RequestBody User user);
 
     /**
      * 用户列表（营业员和库管员）
@@ -45,7 +45,7 @@ public interface UserMapper {
      * @return
      */
     @DeleteMapping("/user/deleteUserById")
-    int deleteUserById(Integer id);
+    int deleteUserById(@RequestParam Integer id);
 
     /**
      * 修改用户（营业员或库管员）
@@ -53,7 +53,7 @@ public interface UserMapper {
      * @return
      */
     @PutMapping("/user/updateUserById")
-    int updateUserById(User user);
+    int updateUserById(@RequestBody User user);
 
     /**
      * 修改用户（营业员或库管员）
