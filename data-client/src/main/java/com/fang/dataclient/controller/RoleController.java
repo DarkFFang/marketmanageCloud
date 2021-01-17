@@ -55,7 +55,7 @@ public class RoleController {
      * @return int
      */
     @PostMapping("/addNewRole")
-    public int addNewRole(Role role) {
+    public int addNewRole(@RequestBody Role role) {
         return roleMapper.addNewRole(role);
     }
 
@@ -66,7 +66,7 @@ public class RoleController {
      * @return int
      */
     @PutMapping("/updateRoleById")
-    public int updateRoleById(Role role) {
+    public int updateRoleById(@RequestBody Role role) {
         return roleMapper.updateRoleById(role);
     }
 

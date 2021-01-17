@@ -31,7 +31,7 @@ public class UnitController {
      * @return int
      */
     @PostMapping("/addNewUnit")
-    public int addNewUnit(Unit unit) {
+    public int addNewUnit(@RequestBody Unit unit) {
         return unitMapper.addNewUnit(unit);
     }
 

@@ -31,7 +31,9 @@ public class WorkTimeController {
      * @return int
      */
     @PostMapping("/addNewWorkTime")
-    public int addNewWorkTime(WorkTime worktime){return workTimeMapper.addNewWorkTime(worktime);}
+    public int addNewWorkTime(@RequestBody WorkTime worktime){
+        return workTimeMapper.addNewWorkTime(worktime);
+    }
 
     /**
      * 通过id删除工作时间
@@ -40,7 +42,9 @@ public class WorkTimeController {
      * @return int
      */
     @DeleteMapping("/deleteWorkTimeById")
-    public int deleteWorkTimeById(Integer id){return workTimeMapper.deleteWorkTimeById(id);}
+    public int deleteWorkTimeById(Integer id){
+        return workTimeMapper.deleteWorkTimeById(id);
+    }
 
     /**
      * 通过id更新工作时间
@@ -49,7 +53,9 @@ public class WorkTimeController {
      * @return int
      */
     @PutMapping("/updateWorkTimeById")
-    public int updateWorkTimeById(WorkTime worktime){return workTimeMapper.updateWorkTimeById(worktime);}
+    public int updateWorkTimeById(@RequestBody WorkTime worktime){
+        return workTimeMapper.updateWorkTimeById(worktime);
+    }
 
     /**
      * 工作时间列表
@@ -57,7 +63,9 @@ public class WorkTimeController {
      * @return {@link List<WorkTime>}
      */
     @GetMapping("/findWorkTimeList")
-    public List<WorkTime> findWorkTimeList(){return workTimeMapper.findWorkTimeList();}
+    public List<WorkTime> findWorkTimeList(){
+        return workTimeMapper.findWorkTimeList();
+    }
 
     /**
      * 按用户名搜索工作时间

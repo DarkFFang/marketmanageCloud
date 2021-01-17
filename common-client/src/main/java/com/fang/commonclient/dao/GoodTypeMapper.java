@@ -2,10 +2,7 @@ package com.fang.commonclient.dao;
 
 import com.fang.commonclient.entity.GoodType;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,7 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "GoodType")
+@FeignClient(value = "data-client",contextId = "GoodTypeMapper")
 public interface GoodTypeMapper {
     /**
      * 增加用户类型
@@ -23,7 +20,7 @@ public interface GoodTypeMapper {
      * @return
      */
     @PostMapping("/goodType/addNewGoodType")
-    int addNewGoodType(GoodType goodType);
+    int addNewGoodType(@RequestBody GoodType goodType);
 
     /**
      * 商品类型列表

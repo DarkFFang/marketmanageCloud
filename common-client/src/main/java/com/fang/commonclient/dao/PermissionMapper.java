@@ -13,7 +13,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "Permission")
+@FeignClient(value = "data-client",contextId = "PermissionMapper")
 public interface PermissionMapper {
 
     /**
@@ -30,7 +30,7 @@ public interface PermissionMapper {
      * @return
      */
     @GetMapping("/permission/findPermissionsByRoleId")
-    List<PermissionVo> findPermissionsByRoleId(Integer id);
+    List<PermissionVo> findPermissionsByRoleId(@RequestParam Integer id);
 
     /**
      * 权限列表
@@ -45,7 +45,7 @@ public interface PermissionMapper {
      * @return
      */
     @GetMapping("/permission/findMenuByUserId")
-    List<PermissionVo> findMenuByUserId(Integer id);
+    List<PermissionVo> findMenuByUserId(@RequestParam Integer id);
 
     /**
      * 添加角色权限
@@ -62,5 +62,5 @@ public interface PermissionMapper {
      * @return
      */
     @DeleteMapping("/permission/deleteRolePermissionByRoleId")
-    int deleteRolePermissionByRoleId(Integer roleid);
+    int deleteRolePermissionByRoleId(@RequestParam Integer roleid);
 }

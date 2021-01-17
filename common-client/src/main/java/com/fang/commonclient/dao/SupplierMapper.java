@@ -12,7 +12,7 @@ import java.util.List;
  * @author fang
  * @since 2020/12/14
  */
-@FeignClient(value = "data-client",contextId = "Supplier")
+@FeignClient(value = "data-client",contextId = "SupplierMapper")
 public interface SupplierMapper {
 
     /**
@@ -21,7 +21,7 @@ public interface SupplierMapper {
      * @return
      */
     @PostMapping("/supplier/addNewSupplier")
-    int addNewSupplier(Supplier supplier);
+    int addNewSupplier(@RequestBody Supplier supplier);
 
     /**
      * 供应商列表
@@ -36,7 +36,7 @@ public interface SupplierMapper {
      * @return
      */
     @DeleteMapping("/supplier/deleteSupplierById")
-    int deleteSupplierById(Integer id);
+    int deleteSupplierById(@RequestParam Integer id);
 
     /**
      * 修改供应商
@@ -44,7 +44,7 @@ public interface SupplierMapper {
      * @return
      */
     @PutMapping("/supplier/updateSupplierById")
-    int updateSupplierById(Supplier supplier);
+    int updateSupplierById(@RequestBody Supplier supplier);
 
     /**
      * 通过供应商名称查询供应商

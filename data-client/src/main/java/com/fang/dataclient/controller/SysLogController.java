@@ -31,7 +31,7 @@ public class SysLogController {
      * @return int
      */
     @PostMapping("/addNewSysLog")
-    public int addNewSysLog(SysLog sysLog) {
+    public int addNewSysLog(@RequestBody SysLog sysLog) {
         return sysLogMapper.addNewSysLog(sysLog);
     }
 
@@ -42,7 +42,7 @@ public class SysLogController {
      * @return int
      */
     @PostMapping("/addNewLoginLog")
-    public int addNewLoginLog(SysLog sysLog) {
+    public int addNewLoginLog(@RequestBody SysLog sysLog) {
         return sysLogMapper.addNewLoginLog(sysLog);
     }
 
