@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fang.marketmanage.dao.SysLogMapper">
-    <resultMap id="sysLogResultMap" type="com.fang.marketmanage.entity.SysLog">
+<mapper namespace="com.fang.dataclient.dao.SysLogMapper">
+    <resultMap id="sysLogResultMap" type="com.fang.dataclient.entity.SysLog">
         <id property="id" column="id"/>
         <result property="userId" column="userid"/>
         <result property="userPhone" column="userphone"/>
@@ -13,11 +13,11 @@
         <result property="ip" column="ip"/>
         <result property="createDate" column="create_date"/>
     </resultMap>
-    <insert id="addNewSysLog" parameterType="com.fang.marketmanage.entity.SysLog">
+    <insert id="addNewSysLog" parameterType="com.fang.dataclient.entity.SysLog">
         INSERT INTO sys_log(userid,userphone,username,operation,method,ip,create_date)
         VALUES (#{userId},#{userPhone},#{username},#{operation},#{method},#{ip},#{createDate})
     </insert>
-    <insert id="addNewLoginLog" parameterType="com.fang.marketmanage.entity.SysLog">
+    <insert id="addNewLoginLog" parameterType="com.fang.dataclient.entity.SysLog">
         INSERT INTO login_log(userid,userphone,username,operation,method,ip,create_date)
         VALUES (#{userId},#{userPhone},#{username},#{operation},#{method},#{ip},#{createDate})
     </insert>

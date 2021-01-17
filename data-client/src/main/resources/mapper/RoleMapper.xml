@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fang.marketmanage.dao.RoleMapper">
-    <resultMap id="roleResultMap" type="com.fang.marketmanage.entity.Role">
+<mapper namespace="com.fang.dataclient.dao.RoleMapper">
+    <resultMap id="roleResultMap" type="com.fang.dataclient.entity.Role">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
     </resultMap>
@@ -14,10 +14,10 @@
     <select id="findAllRole" resultMap="roleResultMap">
         SELECT * FROM role
     </select>
-    <insert id="addNewRole" parameterType="com.fang.marketmanage.entity.Role">
+    <insert id="addNewRole" parameterType="com.fang.dataclient.entity.Role">
         INSERT INTO role(name) VALUES (#{name})
     </insert>
-    <update id="updateRoleById" parameterType="com.fang.marketmanage.entity.Role">
+    <update id="updateRoleById" parameterType="com.fang.dataclient.entity.Role">
         UPDATE role
         SET name=#{name}
         WHERE id=#{id}

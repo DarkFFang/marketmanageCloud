@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fang.marketmanage.dao.GoodTypeMapper">
-    <resultMap id="goodTypeResultMap" type="com.fang.marketmanage.entity.GoodType">
+<mapper namespace="com.fang.dataclient.dao.GoodTypeMapper">
+    <resultMap id="goodTypeResultMap" type="com.fang.dataclient.entity.GoodType">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
     </resultMap>
-    <insert id="addNewGoodType" parameterType="com.fang.marketmanage.entity.GoodType">
+    <insert id="addNewGoodType" parameterType="com.fang.dataclient.entity.GoodType">
         INSERT INTO good(name) VALUES (#{name})
     </insert>
     <select id="findGoodTypeList" resultMap="goodTypeResultMap">

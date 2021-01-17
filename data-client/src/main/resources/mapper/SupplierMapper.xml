@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fang.marketmanage.dao.SupplierMapper">
-    <resultMap id="supplierResultMap" type="com.fang.marketmanage.entity.Supplier">
+<mapper namespace="com.fang.dataclient.dao.SupplierMapper">
+    <resultMap id="supplierResultMap" type="com.fang.dataclient.entity.Supplier">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="address" column="address"/>
@@ -13,7 +13,7 @@
         <result property="reputation" column="reputation"/>
         <result property="loan" column="loan"/>
     </resultMap>
-    <insert id="addNewSupplier" parameterType="com.fang.marketmanage.entity.Supplier">
+    <insert id="addNewSupplier" parameterType="com.fang.dataclient.entity.Supplier">
         INSERT INTO supplier(name,address,phone,email,fax,reputation,loan) VALUES (#{name},#{address},#{phone},#{email},#{fax},#{reputation},#{loan})
     </insert>
     <select id="findSupplierList" resultMap="supplierResultMap">

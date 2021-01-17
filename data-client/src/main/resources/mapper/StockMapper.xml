@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fang.marketmanage.dao.StockMapper">
-    <resultMap id="stockResultMap" type="com.fang.marketmanage.entity.Stock">
+<mapper namespace="com.fang.dataclient.dao.StockMapper">
+    <resultMap id="stockResultMap" type="com.fang.dataclient.entity.Stock">
         <id property="goodId" column="goodid"/>
         <result property="date" column="date"/>
         <result property="typeId" column="typeid"/>
@@ -14,7 +14,7 @@
     <select id="findStockList" resultMap="stockResultMap">
         SELECT * FROM stock
     </select>
-    <insert id="addNewStock" parameterType="com.fang.marketmanage.entity.Stock">
+    <insert id="addNewStock" parameterType="com.fang.dataclient.entity.Stock">
         INSERT INTO stock(goodid,date,typeId,quantity,unitId,price) VALUES (#{goodId},#{date},#{typeid},0,#{unitId},0)
     </insert>
     <select id="findStockByName" resultMap="stockResultMap">

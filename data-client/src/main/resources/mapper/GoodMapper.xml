@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fang.marketmanage.dao.GoodMapper">
-    <resultMap id="goodResultMap" type="com.fang.marketmanage.entity.Good">
+<mapper namespace="com.fang.dataclient.dao.GoodMapper">
+    <resultMap id="goodResultMap" type="com.fang.dataclient.entity.Good">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="typeId" column="typeid"/>
@@ -13,7 +13,7 @@
         <result property="unitId" column="unitid"/>
         <result property="other" column="other"/>
     </resultMap>
-    <insert id="addNewGood" parameterType="com.fang.marketmanage.entity.Good">
+    <insert id="addNewGood" parameterType="com.fang.dataclient.entity.Good">
         INSERT INTO good(name,typeId,sDate,eDate,price,unitId,other)
         VALUES (#{name},#{typeId},#{sDate},#{eDate},#{price},#{unitId},#{other})
     </insert>

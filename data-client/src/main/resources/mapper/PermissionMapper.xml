@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fang.marketmanage.dao.PermissionMapper">
-    <resultMap id="permissionResultMap" type="com.fang.marketmanage.entity.Permission">
+<mapper namespace="com.fang.dataclient.dao.PermissionMapper">
+    <resultMap id="permissionResultMap" type="com.fang.dataclient.entity.Permission">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="url" column="url"/>
@@ -19,14 +19,14 @@
         LEFT JOIN permission p ON p.id =rp.permissionid
         WHERE u.id=#{id}
     </select>
-    <select id="findPermissionsByRoleId" resultType="com.fang.marketmanage.entity.vo.PermissionVo">
+    <select id="findPermissionsByRoleId" resultType="com.fang.dataclient.entity.vo.PermissionVo">
         SELECT id,url,name FROM permission
         WHERE id in (SELECT permissionid FROM role_permission WHERE roleid=#{roleid})
     </select>
-    <select id="findAllPermissions" resultType="com.fang.marketmanage.entity.vo.PermissionVo">
+    <select id="findAllPermissions" resultType="com.fang.dataclient.entity.vo.PermissionVo">
         SELECT id,url,name FROM permission
     </select>
-    <select id="findMenuByUserId" resultType="com.fang.marketmanage.entity.vo.PermissionVo">
+    <select id="findMenuByUserId" resultType="com.fang.dataclient.entity.vo.PermissionVo">
         SELECT p.id,url,p.name
         FROM user u
         LEFT JOIN user_role ur ON u.id=ur.userid
