@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fang.dataclient.dao.SupplierMapper">
+    <resultMap id="supplierResultMap" type="com.fang.dataclient.entity.Supplier">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="fax" column="fax"/>
+        <result property="reputation" column="reputation"/>
+        <result property="loan" column="loan"/>
+    </resultMap>
+    <insert id="addNewSupplier" parameterType="com.fang.dataclient.entity.Supplier">
+        INSERT INTO supplier(name,address,phone,email,fax,reputation,loan) VALUES (#{name},#{address},#{phone},#{email},#{fax},#{reputation},#{loan})
+    </insert>
+    <select id="findSupplierList" resultMap="supplierResultMap">
+        SELECT * FROM supplier
+    </select>
+    <delete id="deleteSupplierById">
+        DELETE FROM supplier WHERE id=#{id}
+    </delete>
+<!--    <update id="updateSupplierById">-->
+<!--        UPDATE supplier SET name=#{name},address=#{address},phone=#{phone},email=#{email},fax=#{fax},reputation=#{reputation},loan=#{loan}-->
+<!--        WHERE id=#{id}-->
+<!--    </update>-->
+    <update id="updateSupplierById">
+        UPDATE supplier w
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                w.name = #{name},
+            </if>
+            <if test="address != null and address != ''">
+                w.address = #{address},
+            </if>
+            <if test="phone != null and phone != ''">
+                w.phone = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                w.email = #{email},
+            </if>
+            <if test="fax != null and fax != ''">
+                w.fax = #{fax},
+            </if>
+            <if test="reputation != null and reputation != ''">
+                w.reputation = #{reputation},
+            </if>
+            <if test="loan != null and loan != '' or loan == 0">
+                w.loan = #{loan},
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+    <select id="findSupplierByName" resultMap="supplierResultMap">
+        SELECT * FROM supplier WHERE name=#{name}
+    </select>
+    <select id="findSupplierByReputation" resultMap="supplierResultMap">
+        SELECT * FROM supplier WHERE reputation=#{reputation}
+    </select>
+</mapper>

@@ -1,0 +1,30 @@
+server:
+  port: 8071
+
+spring:
+  application:
+    name: data-client
+  datasource:
+    url: jdbc:mysql://localhost:3306/marketmanage?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 555913
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      max-lifetime: 120000
+
+mybatis:
+  type-aliases-package: com.fang.dataclient.entity
+  check-config-location: true
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+
+logging:
+  level:
+    com.fang.dataclient: debug

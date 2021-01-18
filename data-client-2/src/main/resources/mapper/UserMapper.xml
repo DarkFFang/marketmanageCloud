@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fang.dataclient.dao.UserMapper">
+    <resultMap id="userVoResultMap" type="com.fang.dataclient.entity.vo.UserVo">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="phone" column="phone"/>
+        <result property="sex" column="sex"/>
+        <collection property="roles" ofType="com.fang.dataclient.entity.Role">
+            <id property="id" column="rid"/>
+            <result property="name" column="rname"/>
+        </collection>
+    </resultMap>
+    <insert id="addNewUser" parameterType="com.fang.dataclient.entity.User">
+        INSERT INTO user(username,phone,password,sex)
+        VALUES (#{username},#{phone},#{password},#{sex})
+    </insert>
+    <select id="findUserList" resultMap="userVoResultMap">
+        SELECT user.id,user.username,user.phone,user.sex,role.id as rid,role.name as rname
+        FROM user
+        LEFT JOIN user_role
+        ON user.id=user_role.userid
+        LEFT JOIN role
+        ON user_role.roleid=role.id
+    </select>
+    <select id="findUserById" resultType="com.fang.dataclient.entity.User">
+        SELECT id,username,phone,password,sex
+        FROM user
+        WHERE id=#{id}
+    </select>
+    <delete id="deleteUserById">
+        DELETE FROM user
+        WHERE id=#{id}
+    </delete>
+    <update id="updateUserById">
+        UPDATE user u
+        <trim prefix="set" suffixOverrides=",">
+            <if test="username != null and username != ''">
+                u.username = #{username},
+            </if>
+            <if test="phone != null and phone != ''">
+                u.phone = #{phone},
+            </if>
+            <if test="password != null and password != ''">
+                u.password = #{password},
+            </if>
+            <if test="sex != null and sex != ''">
+                u.sex = #{sex},
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+    <update id="updateUserRoleById">
+        UPDATE user_role
+        SET roleid=(SELECT roleid FROM role name=#{name})
+        WHERE  userid=(SELECT userid FROM user WHERE username=#{username})
+    </update>
+    <select id="findUsersByUsername">
+        SELECT * FROM user
+        WHERE username=#{username}
+    </select>
+    <select id="findUserByPhone" resultType="com.fang.dataclient.entity.User">
+        SELECT * FROM user
+        WHERE phone=#{phone}
+    </select>
+    <select id="findClerkList">
+        SELECT * FROM user
+        WHERE roleid=2
+    </select>
+    <select id="findKeeperList">
+        SELECT * FROM user
+        WHERE roleid=3
+    </select>
+    <insert id="addPermissionById">
+        INSERT INTO (roleid,permissionid)
+        VALUES (#{roleid},#{permissionId})
+    </insert>
+    <delete id="deletePermissionById">
+        DELETE FROM role_permission WHERE roleid=#{roleId}
+    </delete>
+    <select id="findPermissionById">
+        SELECT * FROM role_permission WHERE roleid=#{roleId}
+    </select>
+    <update id="alterUserAutoIncrement">
+        ALTER TABLE user auto_increment = 1
+    </update>
+</mapper>

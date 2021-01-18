@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fang.dataclient.dao.RefundMapper">
+    <resultMap id="refundResultMap" type="com.fang.dataclient.entity.Refund">
+        <id property="id" column="id"/>
+        <result property="goodId" column="goodid"/>
+        <result property="date" column="date"/>
+        <result property="quantity" column="quantity"/>
+        <result property="unitId" column="unitid"/>
+        <result property="price" column="price"/>
+        <result property="reason" column="reason"/>
+    </resultMap>
+    <insert id="addNewRefund" parameterType="com.fang.dataclient.entity.Refund">
+        INSERT INTO refund(goodid,date,quantity,unitid,price,reason)
+        VALUES (#{goodId},#{date},#{quantity},#{unitId},#{price},#{reason})
+    </insert>
+    <select id="findRefundList" resultMap="refundResultMap">
+        SELECT * FROM refund
+    </select>
+    <delete id="deleteRefundById">
+        DELETE FROM refund WHERE id=#{id}
+    </delete>
+    <update id="updateRefundById">
+        UPDATE refund w
+        <trim prefix="set" suffixOverrides=",">
+            <if test="goodId != null and goodId != ''">
+                w.goodid = #{goodId},
+            </if>
+            <if test="date != null">
+                w.date = #{date},
+            </if>
+            <if test="quantity != null and quantity != '' or quantiry == 0">
+                w.quantity = #{quantity},
+            </if>
+            <if test="unitId != null and unitId != ''">
+                w.unitid = #{unitId},
+            </if>
+            <if test="price != null and price != '' or price == 0">
+                w.price = #{price},
+            </if>
+            <if test="reason != null and reason != ''">
+                w.reason = #{reason},
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+    <select id="findRefundListByName" resultMap="refundResultMap">
+        SELECT * FROM refund WHERE goodid=(SELECT goodid FROM good WHERE name=#{name})
+    </select>
+    <select id="findRefundListByDate" resultMap="refundResultMap">
+        SELECT * FROM refund WHERE date=#{date}
+    </select>
+</mapper>

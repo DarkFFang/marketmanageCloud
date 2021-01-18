@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fang.dataclient.dao.StockMapper">
+    <resultMap id="stockResultMap" type="com.fang.dataclient.entity.Stock">
+        <id property="goodId" column="goodid"/>
+        <result property="date" column="date"/>
+        <result property="typeId" column="typeid"/>
+        <result property="quantity" column="quantity"/>
+        <result property="unitId" column="unitid"/>
+        <result property="price" column="price"/>
+    </resultMap>
+    <select id="findStockList" resultMap="stockResultMap">
+        SELECT * FROM stock
+    </select>
+    <insert id="addNewStock" parameterType="com.fang.dataclient.entity.Stock">
+        INSERT INTO stock(goodid,date,typeid,quantity,unitid,price) VALUES (#{goodId},#{date},#{typeId},0,#{unitId},0)
+    </insert>
+    <select id="findStockByName" resultMap="stockResultMap">
+        SELECT  * FROM stock WHERE goodid=(SELECT goodid FROM good WHERE name=#{name})
+    </select>
+    <select id="findStockListByType" resultMap="stockResultMap">
+        SELECT  * FROM stock WHERE goodid IN (SELECT goodid FROM good WHERE typeid=(SELECT typeid FROM goodtype WHERE name=#{name}))
+    </select>
+    <select id="findStockCount">
+        SELECT COUNT(*) FROM stock
+    </select>
+    <update id="updateStockQuantityIncByGoodId">
+        UPDATE stock
+        SET quantity=quantity+(#{increment}),date=current_date()
+        WHERE goodid=#{goodid}
+    </update>
+    <update id="updateStockQuantityDecByGoodId">
+        UPDATE stock
+        SET quantity=quantity-(#{decrement}),date=current_date()
+        WHERE goodid=#{goodid}
+    </update>
+    <update id="updateStockQuantityByGoodId">
+        UPDATE stock
+        SET quantity=#{newQuantity},date=current_date()
+        WHERE goodid=#{goodid}
+    </update>
+    <update id="alterStockAutoIncrement">
+        ALTER TABLE stock auto_increment = 1
+    </update>
+</mapper>
