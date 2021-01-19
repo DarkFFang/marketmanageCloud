@@ -18,3 +18,4 @@ zuul:
     common:
       path: /common/**
       serviceId: common-client
+      sensitiveHeaders:
